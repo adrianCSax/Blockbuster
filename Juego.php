@@ -16,18 +16,12 @@ class Juego extends Soporte {
     }
 
     public function muestraJugadoresPosibles(): string {
-        $cadena = "";
         if ($this->minJugadores == $this->maxJugadores) {
-
-            if ($this->minJugadores == 1) {
-                $cadena .= "Para " . $this->minJugadores . " jugador";
-            } else {
-                $cadena .= "Para " . $this->minJugadores . " jugadores";
-            }
+            $jugadoresString = ($this->minJugadores === 1) ? " jugador" : " jugadores";
+            return "Para " . $this->minJugadores . $jugadoresString;
         } else {
-            $cadena .= "De " . $this->minJugadores . " a " . $this->maxJugadores . " jugadores.";
+            return "De " . $this->minJugadores . " a " . $this->maxJugadores . " jugadores.";
         }
-        return $cadena;
     }
 
     public function mostrarResumen(): void {
