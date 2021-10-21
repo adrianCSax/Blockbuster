@@ -31,4 +31,13 @@ class Juego extends Soporte
         }
         return $cadena;
     }
+
+    public function mostrarResumen(): string
+    {
+        $cadena = "Juego para " . $this->consola;
+        $cadena .= parent::mostrarResumen();
+        $cadena .= $this->muestraJugadoresPosibles();
+
+        return $cadena;
+    }
 }
