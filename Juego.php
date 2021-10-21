@@ -2,8 +2,7 @@
 
 include_once "Soporte.php";
 
-class Juego extends Soporte
-{
+class Juego extends Soporte {
 
     public function __construct(
         $titulo,
@@ -16,8 +15,7 @@ class Juego extends Soporte
         parent::__construct($titulo, $numero, $precio);
     }
 
-    public function muestraJugadoresPosibles(): string
-    {
+    public function muestraJugadoresPosibles(): string {
         $cadena = "";
         if ($this->minJugadores == $this->maxJugadores) {
 
@@ -32,12 +30,9 @@ class Juego extends Soporte
         return $cadena;
     }
 
-    public function mostrarResumen(): string
-    {
-        $cadena = "Juego para " . $this->consola;
-        $cadena .= parent::mostrarResumen();
-        $cadena .= $this->muestraJugadoresPosibles();
-
-        return $cadena;
+    public function mostrarResumen(): void {
+        echo "<br>Juego para " . $this->consola;
+        parent::mostrarResumen();
+        echo $this->muestraJugadoresPosibles();
     }
 }

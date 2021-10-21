@@ -9,11 +9,10 @@ class Dvd extends Soporte {
         parent::__construct($titulo, $numero, $precio);
     }
 
-    public function mostrarResumen() : string {
-        $cadena = "Película en DVD <br>";
-        $cadena .= parent::mostrarResumen();
-        $cadena .= $this->idiomas . "<br>" . 
-        "Formato Pantalla: " . $this->formatPantalla;
-        return $cadena;
+    public function mostrarResumen() : void {
+        echo "<br>Película en DVD:";
+        parent::mostrarResumen();
+        echo $this->idiomas . "<br>";
+        echo "Formato Pantalla: " . $this->formatPantalla;
     }
 }
