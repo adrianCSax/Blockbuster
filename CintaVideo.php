@@ -9,8 +9,9 @@ class CintaVideo extends Soporte {
     }
 
     public function mostrarResumen() : void {
+        $min = ($this->duracion < 2) ? "minuto" : "minutos";
         echo "<br>Película en VHS:";
         parent::mostrarResumen();
-        echo "Duración: " . $this->duracion . $this->duracion < 2 ? "minuto" : "minutos";
+        echo "Duración: " . $this->duracion . " " . $min;
     }
 }
