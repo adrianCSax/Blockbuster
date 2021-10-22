@@ -51,10 +51,9 @@ class Cliente
     {
         foreach ($this->soportesAlquilados as $soporte) {
             if ($soporte->getNumero() == $numSoporte) {
-                if (($key = array_search($soporte, $this->soportesAlquilados)) !== FALSE) {
-                    unset($this->soportesAlquilados[$key]);
-                    return true;
-                }
+                $key = array_search($soporte, $this->soportesAlquilados);
+                unset($this->soportesAlquilados[$key]);
+                return true;
             }
         }
         return false;
