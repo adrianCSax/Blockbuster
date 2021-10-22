@@ -12,7 +12,7 @@ declare(strict_types=1);
 class Soporte
 {
 
-    private const IVA = 1.21;
+    private static float $IVA = 1.21;
 
     public function __construct(
         public string $titulo,
@@ -30,7 +30,7 @@ class Soporte
     }
 
     public function getPrecioConIva(): float {
-        return $this->precio * self::IVA;
+        return $this->precio * self::$IVA;
     }
 
     public function mostrarResumen() : void {
