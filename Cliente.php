@@ -12,6 +12,7 @@ class Cliente
         private int $maxAlquilerConcurrente = 3
     ) {
         $this->soportesAlquilados = [];
+        $this->numSoprtesAlquilados = 0;
     }
 
     public function getSoportesAlquilados(): array
@@ -35,27 +36,47 @@ class Cliente
 
     public function alquilar(Soporte $soporte): bool
     {
-        if (!$this->tieneAlquilado($soporte) && ($this->numSoprtesAlquilados < $this->maxAlquilerConcurrente)) {
+        if ($this->tieneAlquilado($soporte)) {
+            echo "<p>El cliente ya tiene alquilado el soporte <b>" . $soporte->getTitulo() . "</b>.</p>";
+            return false;
+        } else if ($this->numSoprtesAlquilados == $this->maxAlquilerConcurrente) {
+            echo "<p>Este cliente ya tiene " . $this->maxAlquilerConcurrente . " soportes alquilados. No puede alquilar 
+            más en este videoclub hasta que no devuelva algo.</p>";
+            return false;
+        } else {
             array_push($this->soportesAlquilados, $soporte);
             $this->numSoprtesAlquilados++;
-            echo "<strong>Alquilado soporte a </strong>" . $this->nombre;
-            $soporte->mostrarResumen();
-
+            echo "<br><strong>Alquilado soporte a: </strong>" . $this->nombre;
+            echo "<p>" . $soporte->mostrarResumen() . "</p>";
             return true;
         }
-        echo "<strong>No se ha podido alquilar</strong>" . $this->nombre;
-        return false;
     }
 
     public function devolver(int $numSoporte): bool
     {
-        foreach ($this->soportesAlquilados as $soporte) {
-            if ($soporte->getNumero() == $numSoporte) {
-                $key = array_search($soporte, $this->soportesAlquilados);
-                unset($this->soportesAlquilados[$key]);
-                return true;
+        if ($this->numSoprtesAlquilados != 0) {
+            foreach ($this->soportesAlquilados as $soporte) {
+                if ($soporte->getNumero() == $numSoporte) {
+                    $key = array_search($soporte, $this->soportesAlquilados);
+                    unset($this->soportesAlquilados[$key]);
+                    echo "<p>El soporte <b>" . $soporte->getTitulo() . "</b> ha sido devuelto.</p>";
+                    return true;
+                }
             }
+            echo "<p>No se ha podido encontrar el soporte en los alquileres de este cliente.</p>";
+            return false;
+        } else {
+            echo "<p>Este cliente no tiene alquilado ningún elemento</p>";
+            return false;
         }
-        return false;
+    }
+
+    public function listaAlquileres(): void
+    {
+        echo "<b>El cliente tiene " . $this->numSoprtesAlquilados . " soportes alquilados.</b><br>";
+        foreach ($this->soportesAlquilados as $soporte) {
+            echo $soporte->mostrarResumen();
+            echo "<br>";
+        }
     }
 }

@@ -20,6 +20,9 @@ class Soporte
         private float $precio
     ){}
 
+    public function getTitulo() : string {
+        return $this->titulo;
+    }
 
     public function getNumero(): string {
         return $this->numero;
