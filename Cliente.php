@@ -24,6 +24,11 @@ class Cliente
     {
         return $this->numero;
     }
+
+    public function getNumSoportesAlquilados() : int {
+        return $this->numSoprtesAlquilados;
+    }
+
     public function setNumero(int $numero): void
     {
         $this->numero = $numero;
