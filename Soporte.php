@@ -9,7 +9,14 @@
 
 declare(strict_types=1);
 
-class Soporte
+/*328 Que consigues al hacerla abstracta? Básicamente se abstraen implementaciones del padre para darsela a lo hijos
+ obligando a las clases hijas a heredar los metodos marcados como abstractos. Con esto conseguimos una clase padre más simplificada
+ haciendo uso del polimorfismo. Por ejemplo: En esta clase que debería ser marcado como asbtracto es "mostrarResumen()", ya que
+ sus hijos CintaVideo, Dvd y Juego tienen diferentes implementaciones. Sin embargo no lo hemos hecho porque cada uno de los hijos,
+ llamamos a la clase padre para reducir la complejidad del código.
+*/
+
+abstract class Soporte
 {
 
     private static float $IVA = 1.21;
