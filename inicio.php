@@ -1,8 +1,13 @@
 <?php
-include "Soporte.php";
-include "CintaVideo.php";
-include "Dvd.php";
-include "Juego.php";
+include "Dwes/ProyectoVideoClub/Soporte.php";
+include "Dwes/ProyectoVideoClub/CintaVideo.php";
+include "Dwes/ProyectoVideoClub/Dvd.php";
+include "Dwes/ProyectoVideoClub/Juego.php";
+
+use Dwes\ProyectoVideoClub\CintaVideo;
+use Dwes\ProyectoVideoClub\Dvd;
+use Dwes\ProyectoVideoClub\Juego;
+use Dwes\ProyectoVideoClub\Soporte;
 
 // 220
 $soporte1 = new Soporte("Tenet", 22, 3); 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Dwes\ProyectoVideoClub;
+
 class Cliente
 {
 
@@ -29,46 +31,47 @@ class Cliente
         return $this->numSoprtesAlquilados;
     }
 
-    public function setNumero(int $numero): void
+    public function setNumero(int $numero): Cliente
     {
         $this->numero = $numero;
+        return $this;
     }
 
     public function tieneAlquilado(Soporte $soporte): bool {
         return ($this->soportesAlquilados[$soporte->getNumero()] !== null);
     }
 
-    public function alquilar(Soporte $soporte): bool
+    public function alquilar(Soporte $soporte) : Cliente
     {
         if ($this->tieneAlquilado($soporte)) {
             echo "<p>El cliente ya tiene alquilado el soporte <b>" . $soporte->getTitulo() . "</b>.</p>";
-            return false;
+            return $this;
         } else if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
             echo "<p>Este cliente ya tiene " . $this->maxAlquilerConcurrente . " soportes alquilados. No puede alquilar 
             más en este videoclub hasta que no devuelva algo.</p>";
-            return false;
+            return $this;
         } else {
             $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
             $this->numSoprtesAlquilados++;
             echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
             echo $soporte->mostrarResumen() . "</p>";
-            return true;
+            return $this;
         }
     }
 
-    public function devolver(int $numSoporte): bool
+    public function devolver(int $numSoporte): Cliente
     {
         if ($this->numSoprtesAlquilados != 0) {
             unset($this->soportesAlquilados[$numSoporte]);
             echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
-            return true;
+            return $this;
         } else {
             echo "<p>Este cliente no tiene alquilado ningún elemento</p>";
-            return false;
+            return $this;
         }
     }
 
-    public function listaAlquileres(): void
+    public function listaAlquileres() : void
     {
         echo "<b>El cliente tiene " . $this->numSoprtesAlquilados . " soportes alquilados.</b><br>";
         foreach ($this->soportesAlquilados as $soporte) {

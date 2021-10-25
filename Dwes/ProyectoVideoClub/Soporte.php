@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
     Crea una clase para almacenar soportes (Soporte.php). Esta clase será la clase padre de los diferentes soportes con los que trabaje nuestro videoclub (cintas de vídeo, videojuegos, etc...):
         Crea el constructor que inicialice sus propiedades. Fíjate que la clase no tiene métodos setters.
@@ -7,7 +9,8 @@
         Crear un archivo (inicio.php) para usar las clases y copia el siguiente fragmento:
 */
 
-declare(strict_types=1);
+namespace Dwes\ProyectoVideoClub;
+
 include_once "Resumible.php";
 
 /*328 Que consigues al hacerla abstracta? Básicamente se abstraen implementaciones del padre para darsela a lo hijos
