@@ -14,6 +14,7 @@ declare(strict_types=1);
  haciendo uso del polimorfismo. Por ejemplo: En esta clase que debería ser marcado como asbtracto es "mostrarResumen()", ya que
  sus hijos CintaVideo, Dvd y Juego tienen diferentes implementaciones. Sin embargo no lo hemos hecho porque cada uno de los hijos,
  llamamos a la clase padre para reducir la complejidad del código.
+ YA no se puede instaciar al hacerla abstracta.
 */
 
 abstract class Soporte

@@ -25,7 +25,8 @@ class VideoClub
 
     public function incluirProducto(Soporte $producto)
     {
-        $this->productos[] = $producto;
+        $this->productos[$producto->getNumero()] = $producto;
+        echo "<br>Incluido soporte " . $producto->getNumero();
     }
 
     public function incluirCintaVideo(string $titulo, float $precio, int $duracion)
@@ -33,7 +34,6 @@ class VideoClub
 
         $video = new CintaVideo($titulo, strval($this->numProductos),$precio, $duracion);
         $this->incluirProducto($video);
-        echo "<br>Incluido soporte " . $video->getNumero();
         $this->numProductos++;
     }
 
@@ -41,7 +41,6 @@ class VideoClub
     {
         $dvd = new Dvd($titulo, strval($this->numProductos), $precio, $idiomas, $formatPantalla);
         $this->incluirProducto($dvd);
-        echo "<br>Incluido soporte " . $dvd->getNumero();
         $this->numProductos++;
     }
 
@@ -49,7 +48,6 @@ class VideoClub
     {
         $juego = new Juego($titulo, strval($this->numProductos), $precio, $consola, $minJ, $maxJ);
         $this->incluirProducto($juego);
-        echo "<br>Incluido soporte " . $juego->getNumero();
         $this->numProductos++;
     }
 
@@ -59,7 +57,7 @@ class VideoClub
         $socio = new Cliente($nombre, $maxAlquilerConcurrente);
         $socio->setNumero(count($this->socios));
         echo "<br>Incluido Socio " . $socio->getNumero();
-        $this->socios[] = $socio;
+        $this->socios[count($this->socios)] = $socio;
     }
 
     public function listarProductos()
@@ -84,14 +82,14 @@ class VideoClub
 
     public function alquilaSocioProducto(string $numeroCliente, string $numeroSoporte)
     {
-        foreach ($this->socios as $socio) {
-            if ($socio->getNumero() == $numeroCliente) {
-                foreach ($this->productos as $producto) {
-                    if ($producto->getNumero() == $numeroSoporte) {
-                        $socio->alquilar($producto);
-                    }
-                }
-            }
+        $socio = $this->socios[$numeroCliente];
+        $soporte = $this->productos[$numeroSoporte];
+
+        if ($socio != null && $soporte != null){
+            $socio->alquilar($soporte);
+        } else {
+            echo "Error";
         }
+
     }
 }

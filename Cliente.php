@@ -36,7 +36,7 @@ class Cliente
 
     public function tieneAlquilado(Soporte $soporte): bool
     {
-        return in_array($soporte, $this->soportesAlquilados);
+        return $this->soportesAlquilados[$soporte->getNumero()];
     }
 
     public function alquilar(Soporte $soporte): bool
@@ -49,7 +49,7 @@ class Cliente
             más en este videoclub hasta que no devuelva algo.</p>";
             return false;
         } else {
-            array_push($this->soportesAlquilados, $soporte);
+            $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
             $this->numSoprtesAlquilados++;
             echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
             echo $soporte->mostrarResumen() . "</p>";
@@ -60,16 +60,9 @@ class Cliente
     public function devolver(int $numSoporte): bool
     {
         if ($this->numSoprtesAlquilados != 0) {
-            foreach ($this->soportesAlquilados as $soporte) {
-                if ($soporte->getNumero() == $numSoporte) {
-                    $key = array_search($soporte, $this->soportesAlquilados);
-                    unset($this->soportesAlquilados[$key]);
-                    echo "<p>El soporte <b>" . $soporte->getTitulo() . "</b> ha sido devuelto.</p>";
-                    return true;
-                }
-            }
-            echo "<p>No se ha podido encontrar el soporte en los alquileres de este cliente.</p>";
-            return false;
+            unset($this->soportesAlquilados[$numSoporte]);
+            echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
+            return true;
         } else {
             echo "<p>Este cliente no tiene alquilado ningún elemento</p>";
             return false;
