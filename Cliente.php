@@ -5,10 +5,10 @@ class Cliente
 
     private array $soportesAlquilados;
     private int $numSoprtesAlquilados;
+    private string $numero;
 
     public function __construct(
         public string $nombre,
-        private string $numero,
         private int $maxAlquilerConcurrente = 3
     ) {
         $this->soportesAlquilados = [];

@@ -45,10 +45,10 @@ class VideoClub
         $this->incluirProducto($juego);
     }
 
-    //TODO Hay que arreglarlo para que funcione sin añadir número de cliente
+
     public function incluirSocio(string $nombre, int $maxAlquilerConcurrente = 3)
     {
-        $socio = new Cliente($nombre, $numero, $maxAlquilerConcurrente);
+        $socio = new Cliente($nombre, $maxAlquilerConcurrente);
         $this->socios[] = $socio;
     }
 
