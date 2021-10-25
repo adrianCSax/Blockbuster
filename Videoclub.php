@@ -1,12 +1,13 @@
 <?php
 
 declare(strict_types=1);
+include_once "Juego.php";
+include_once "Dvd.php";
+include_once "CintaVideo.php";
+include_once "Cliente.php";
 
 class VideoClub
 {
-
-    //TODO: Probar con inicio3.php. Poner los imports correspondiente. Revisión general.
-
     private string $nombre;
     private array $productos;
     private int $numProductos;
@@ -27,36 +28,47 @@ class VideoClub
         $this->productos[] = $producto;
     }
 
-    public function incluirCintaVideo(string $titulo, string $numero, float $precio, int $duracion)
+    public function incluirCintaVideo(string $titulo, float $precio, int $duracion)
     {
-        $video = new CintaVideo($titulo, $numero, $precio, $duracion);
+
+        $video = new CintaVideo($titulo, strval($this->numProductos),$precio, $duracion);
         $this->incluirProducto($video);
+        echo "<br>Incluido soporte " . $video->getNumero();
+        $this->numProductos++;
     }
 
-    public function incluirDvd(string $titulo, string $numero, float $precio, string $idiomas, string $formatPantalla)
+    public function incluirDvd(string $titulo, float $precio, string $idiomas, string $formatPantalla)
     {
-        $dvd = new Dvd($titulo, $numero, $precio, $idiomas, $formatPantalla);
+        $dvd = new Dvd($titulo, strval($this->numProductos), $precio, $idiomas, $formatPantalla);
         $this->incluirProducto($dvd);
+        echo "<br>Incluido soporte " . $dvd->getNumero();
+        $this->numProductos++;
     }
 
-    public function incluirJuego(string $titulo, string $numero, float $precio, string $consola, int $minJ, int $maxJ)
+    public function incluirJuego(string $titulo, float $precio, string $consola, int $minJ, int $maxJ)
     {
-        $juego = new Juego($titulo, $numero, $precio, $consola, $minJ, $maxJ);
+        $juego = new Juego($titulo, strval($this->numProductos), $precio, $consola, $minJ, $maxJ);
         $this->incluirProducto($juego);
+        echo "<br>Incluido soporte " . $juego->getNumero();
+        $this->numProductos++;
     }
 
 
     public function incluirSocio(string $nombre, int $maxAlquilerConcurrente = 3)
     {
         $socio = new Cliente($nombre, $maxAlquilerConcurrente);
+        $socio->setNumero(count($this->socios));
+        echo "<br>Incluido Socio " . $socio->getNumero();
         $this->socios[] = $socio;
     }
 
     public function listarProductos()
     {
+        echo "<p>";
         foreach ($this->productos as $producto) {
             $producto->mostrarResumen();
         }
+        echo "</p>";
     }
 
     public function listarSocios()
@@ -64,15 +76,13 @@ class VideoClub
         echo "<p>Listado de " . count($this->socios) . " socios del videoclub";
         echo "<ol>";
         foreach ($this->socios as $socio) {
-            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->getNombre() . "<br>";
+            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->nombre . "<br>";
             echo "Alquileres actuales: " . $socio->getNumSoportesAlquilados();
         }
         echo "</ol>";
     }
 
-    //TODO: Encontrar el objeto en el array a partir del número de cliente. Asignar al cliente el producto
-    // Del array productos a partir del número de soporte
-    public function alquilarSocioProducto(string $numeroCliente, string $numeroSoporte)
+    public function alquilaSocioProducto(string $numeroCliente, string $numeroSoporte)
     {
         foreach ($this->socios as $socio) {
             if ($socio->getNumero() == $numeroCliente) {

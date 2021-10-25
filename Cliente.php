@@ -51,8 +51,8 @@ class Cliente
         } else {
             array_push($this->soportesAlquilados, $soporte);
             $this->numSoprtesAlquilados++;
-            echo "<br><strong>Alquilado soporte a: </strong>" . $this->nombre;
-            echo "<p>" . $soporte->mostrarResumen() . "</p>";
+            echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
+            echo $soporte->mostrarResumen() . "</p>";
             return true;
         }
     }
