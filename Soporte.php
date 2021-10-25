@@ -8,6 +8,7 @@
 */
 
 declare(strict_types=1);
+include_once "Resumible.php";
 
 /*328 Que consigues al hacerla abstracta? Básicamente se abstraen implementaciones del padre para darsela a lo hijos
  obligando a las clases hijas a heredar los metodos marcados como abstractos. Con esto conseguimos una clase padre más simplificada
@@ -17,8 +18,7 @@ declare(strict_types=1);
  YA no se puede instaciar al hacerla abstracta.
 */
 
-abstract class Soporte
-{
+abstract class Soporte implements Resumible {
 
     private static float $IVA = 1.21;
 

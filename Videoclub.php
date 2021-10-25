@@ -58,6 +58,7 @@ class VideoClub
         $socio->setNumero(count($this->socios));
         echo "<br>Incluido Socio " . $socio->getNumero();
         $this->socios[count($this->socios)] = $socio;
+        $this->numSocios++;
     }
 
     public function listarProductos()

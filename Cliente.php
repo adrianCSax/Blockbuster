@@ -34,9 +34,8 @@ class Cliente
         $this->numero = $numero;
     }
 
-    public function tieneAlquilado(Soporte $soporte): bool
-    {
-        return $this->soportesAlquilados[$soporte->getNumero()];
+    public function tieneAlquilado(Soporte $soporte): bool {
+        return ($this->soportesAlquilados[$soporte->getNumero()] !== null);
     }
 
     public function alquilar(Soporte $soporte): bool
@@ -44,7 +43,7 @@ class Cliente
         if ($this->tieneAlquilado($soporte)) {
             echo "<p>El cliente ya tiene alquilado el soporte <b>" . $soporte->getTitulo() . "</b>.</p>";
             return false;
-        } else if ($this->numSoprtesAlquilados == $this->maxAlquilerConcurrente) {
+        } else if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
             echo "<p>Este cliente ya tiene " . $this->maxAlquilerConcurrente . " soportes alquilados. No puede alquilar 
             más en este videoclub hasta que no devuelva algo.</p>";
             return false;
