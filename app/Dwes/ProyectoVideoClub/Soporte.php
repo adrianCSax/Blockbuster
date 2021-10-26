@@ -28,7 +28,8 @@ abstract class Soporte implements Resumible {
     public function __construct(
         public string $titulo,
         protected string $numero,
-        private float $precio
+        private float $precio,
+        public bool $alquilado = false
     ){}
 
     public function getTitulo() : string {
