@@ -1,20 +1,17 @@
 <?php
-include "Dwes/ProyectoVideoClub/Soporte.php";
-include "Dwes/ProyectoVideoClub/CintaVideo.php";
-include "Dwes/ProyectoVideoClub/Dvd.php";
-include "Dwes/ProyectoVideoClub/Juego.php";
+include "autoload.php";
 
-use Dwes\ProyectoVideoClub\CintaVideo;
-use Dwes\ProyectoVideoClub\Dvd;
-use Dwes\ProyectoVideoClub\Juego;
-use Dwes\ProyectoVideoClub\Soporte;
+use app\Dwes\ProyectoVideoClub\CintaVideo;
+use app\Dwes\ProyectoVideoClub\Dvd;
+use app\Dwes\ProyectoVideoClub\Juego;
+use app\Dwes\ProyectoVideoClub\Soporte;
 
 // 220
-$soporte1 = new Soporte("Tenet", 22, 3); 
+/* $soporte1 = new Soporte("Tenet", 22, 3); 
 echo "<strong>" . $soporte1->titulo . "</strong>"; 
 echo "<br>Precio: " . $soporte1->getPrecio() . " euros"; 
 echo "<br>Precio IVA incluido: " . $soporte1->getPrecioConIVA() . " euros";
-$soporte1->mostrarResumen();
+$soporte1->mostrarResumen(); */
 
 // 221
 echo "<hr>";

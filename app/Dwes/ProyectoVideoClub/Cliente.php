@@ -1,8 +1,9 @@
 <?php
+declare (strict_types = 1);
+namespace app\Dwes\ProyectoVideoClub;
 
-namespace Dwes\ProyectoVideoClub;
 
-class Cliente
+class Cliente extends VideoClub
 {
 
     private array $soportesAlquilados;
@@ -15,6 +16,7 @@ class Cliente
     ) {
         $this->soportesAlquilados = [];
         $this->numSoprtesAlquilados = 0;
+        $this->numero = "0";
     }
 
     public function getSoportesAlquilados(): array
@@ -22,16 +24,20 @@ class Cliente
         return $this->soportesAlquilados;
     }
 
-    public function getNumero(): int
+    public function getNumero(): string
     {
         return $this->numero;
+    }
+
+    public function getNombre() : string {
+        return $this->nombre;
     }
 
     public function getNumSoportesAlquilados() : int {
         return $this->numSoprtesAlquilados;
     }
 
-    public function setNumero(int $numero): Cliente
+    public function setNumero(string $numero): Cliente
     {
         $this->numero = $numero;
         return $this;

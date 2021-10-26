@@ -9,9 +9,9 @@ declare(strict_types=1);
         Crear un archivo (inicio.php) para usar las clases y copia el siguiente fragmento:
 */
 
-namespace Dwes\ProyectoVideoClub;
+namespace app\Dwes\ProyectoVideoClub;
 
-include_once "Resumible.php";
+include_once "autoload.php";
 
 /*328 Que consigues al hacerla abstracta? Básicamente se abstraen implementaciones del padre para darsela a lo hijos
  obligando a las clases hijas a heredar los metodos marcados como abstractos. Con esto conseguimos una clase padre más simplificada

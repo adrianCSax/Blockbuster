@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Dwes\ProyectoVideoClub;
+namespace app\Dwes\ProyectoVideoClub;
 
-include_once "Juego.php";
-include_once "Dvd.php";
-include_once "CintaVideo.php";
-include_once "Cliente.php";
+include "autoload.php";
 
 
 class VideoClub
@@ -25,6 +22,10 @@ class VideoClub
         $this->socios = [];
         $this->numProductos = 0;
         $this->numSocios = 0;
+    }
+
+    public function getNumSocios() : int {
+        return $this->numSocios;
     }
 
     public function incluirProducto(Soporte $producto) : VideoClub
@@ -62,7 +63,7 @@ class VideoClub
     public function incluirSocio(string $nombre, int $maxAlquilerConcurrente = 3) : VideoClub 
     {
         $socio = new Cliente($nombre, $maxAlquilerConcurrente);
-        $socio->setNumero(count($this->socios));
+        $socio->setNumero(strval(count(($this->socios))));
         echo "<br>Incluido Socio " . $socio->getNumero();
         $this->socios[count($this->socios)] = $socio;
         $this->numSocios++;
@@ -83,7 +84,7 @@ class VideoClub
         echo "<p>Listado de " . count($this->socios) . " socios del videoclub";
         echo "<ol>";
         foreach ($this->socios as $socio) {
-            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->nombre . "<br>";
+            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->getNombre() . "<br>";
             echo "Alquileres actuales: " . $socio->getNumSoportesAlquilados();
         }
         echo "</ol>";
