@@ -1,10 +1,10 @@
 <?php
-include "autoload.php";
+include "vendor/autoload.php";
 
-use app\Dwes\ProyectoVideoClub\CintaVideo;
-use app\Dwes\ProyectoVideoClub\Dvd;
-use app\Dwes\ProyectoVideoClub\Juego;
-use app\Dwes\ProyectoVideoClub\Cliente;
+use Dwes\ProyectoVideoClub\CintaVideo;
+use Dwes\ProyectoVideoClub\Dvd;
+use Dwes\ProyectoVideoClub\Juego;
+use Dwes\ProyectoVideoClub\Cliente;
 
 //instanciamos un par de objetos cliente
 $cliente1 = new Cliente("Bruce Wayne", 23);

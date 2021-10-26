@@ -1,8 +1,6 @@
 <?php 
 
-namespace app\Dwes\ProyectoVideoClub;
-
-include_once "autoload.php";
+namespace Dwes\ProyectoVideoClub;
 
 class CintaVideo extends Soporte {
     public function __construct(string $titulo, string $numero, float $precio, 

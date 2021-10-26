@@ -1,6 +1,9 @@
 <?php
 declare (strict_types = 1);
-namespace app\Dwes\ProyectoVideoClub;
+
+//solo indicamos namespace
+//No hacemos los use de Soporte porque están en el mismo namespace
+namespace Dwes\ProyectoVideoClub;
 
 
 class Cliente extends VideoClub

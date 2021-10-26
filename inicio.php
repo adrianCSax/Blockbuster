@@ -1,10 +1,12 @@
 <?php
-include "autoload.php";
+include "vendor/autoload.php";
 
-use app\Dwes\ProyectoVideoClub\CintaVideo;
-use app\Dwes\ProyectoVideoClub\Dvd;
-use app\Dwes\ProyectoVideoClub\Juego;
-use app\Dwes\ProyectoVideoClub\Soporte;
+//si quiero usar algo fuera del namespace raiz si que tengo que hacer un use
+
+use Dwes\ProyectoVideoClub\CintaVideo;
+use Dwes\ProyectoVideoClub\Dvd;
+use Dwes\ProyectoVideoClub\Juego;
+use Dwes\ProyectoVideoClub\Soporte;
 
 // 220
 /* $soporte1 = new Soporte("Tenet", 22, 3); 

@@ -1,8 +1,7 @@
 <?php
 
-namespace app\Dwes\ProyectoVideoClub;
+namespace Dwes\ProyectoVideoClub;
 
-include_once "autoload.php";
 
 class Juego extends Soporte {
 

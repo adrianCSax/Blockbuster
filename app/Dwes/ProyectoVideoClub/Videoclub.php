@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\Dwes\ProyectoVideoClub;
-
-include "autoload.php";
-
+namespace Dwes\ProyectoVideoClub;
 
 class VideoClub
 {
