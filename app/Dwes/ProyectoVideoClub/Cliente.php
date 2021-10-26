@@ -5,6 +5,8 @@ declare (strict_types = 1);
 //No hacemos los use de Soporte porque están en el mismo namespace
 namespace Dwes\ProyectoVideoClub;
 use Dwes\ProyectoVideoClub\Util;
+use Dwes\ProyectoVideoClub\Util\CupoSuperadoException;
+use Dwes\ProyectoVideoClub\Util\SoporteNoEncontradoException;
 use Dwes\ProyectoVideoClub\Util\SoporteYaAlquiladoException;
 
 class Cliente extends VideoClub
@@ -48,21 +50,21 @@ class Cliente extends VideoClub
     }
 
     public function tieneAlquilado(Soporte $soporte): bool {
-        return ($this->soportesAlquilados[$soporte->getNumero()] !== null);
+        return (isset($this->soportesAlquilados[$soporte->getNumero()]));
     }
 
     public function alquilar(Soporte $soporte) : Cliente
     {
         if ($this->tieneAlquilado($soporte)) {
-            throw new SoporteYaAlquiladoException("Error al alquilar el soporte". $soporte->getTitulo());
-            echo "<p>El cliente ya tiene alquilado el soporte <b>" . $soporte->getTitulo() . "</b>.</p>";
-            return $this;
-        } else if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
-            echo "<p>Este cliente ya tiene " . $this->maxAlquilerConcurrente . " soportes alquilados. No puede alquilar 
-            más en este videoclub hasta que no devuelva algo.</p>";
-            return $this;
+            throw new SoporteYaAlquiladoException("Error al alquilar el soporte ". $soporte->getTitulo());
+        }if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
+            throw new CupoSuperadoException("Error has superado el máximo cupo de Soportes alquilados ");
         } else {
             $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
+            if (isset($this->soportesAlquilados[$soporte->getNumero()])) {
+                throw new SoporteNoEncontradoException("Error no se ha encontrado el soporte ");
+                
+            }
             $this->numSoprtesAlquilados++;
             echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
             echo $soporte->mostrarResumen() . "</p>";
