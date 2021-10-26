@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Dwes\ProyectoVideoClub;
+use \Exception;
 
 use Dwes\ProyectoVideoClub\Util\ClienteNoEncontradoException;
 use Dwes\ProyectoVideoClub\Util\CupoSuperadoException;
