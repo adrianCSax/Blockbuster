@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Dwes\ProyectoVideoClub;
+use \Exception;
 
 use Dwes\ProyectoVideoClub\Util\CupoSuperadoException;
 use Dwes\ProyectoVideoClub\Util\SoporteNoEncontradoException;
@@ -92,6 +93,13 @@ class VideoClub
     }
 
     public function alquilaSocioProducto(string $numeroCliente, string $numeroSoporte) : VideoClub {
+        if(!isset($this->socios[$numeroCliente])){
+            throw new Exception("Error socio inexistente");
+            
+        }
+        if (!isset($this->productos[$numeroSoporte])) {
+            throw new SoporteNoEncontradoException("Error soporte no encontrado");
+        }
         $socio = $this->socios[$numeroCliente];
         $soporte = $this->productos[$numeroSoporte];
 
