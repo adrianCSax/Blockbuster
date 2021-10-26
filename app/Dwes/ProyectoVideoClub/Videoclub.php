@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Dwes\ProyectoVideoClub;
 
+use Dwes\ProyectoVideoClub\Util\CupoSuperadoException;
+use Dwes\ProyectoVideoClub\Util\SoporteNoEncontradoException;
+use Dwes\ProyectoVideoClub\Util\SoporteYaAlquiladoException;
+
 class VideoClub
 {
     private string $nombre;
@@ -91,6 +95,16 @@ class VideoClub
         $socio = $this->socios[$numeroCliente];
         $soporte = $this->productos[$numeroSoporte];
 
+        try {
+            $socio->alquilar($soporte);
+        } catch (SoporteYaAlquiladoException $e) {
+            echo "Error soporte ya está Alquilado".$e;
+        }catch(CupoSuperadoException $e){
+            echo "Error has superado el cupo ".$e;
+        }catch(SoporteNoEncontradoException $e){
+            echo "Error no has encontrado el soporte".$e;
+        }
+         
         if ($socio != null && $soporte != null){
             $socio->alquilar($soporte);
         } else {

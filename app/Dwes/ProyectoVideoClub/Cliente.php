@@ -4,7 +4,8 @@ declare (strict_types = 1);
 //solo indicamos namespace
 //No hacemos los use de Soporte porque están en el mismo namespace
 namespace Dwes\ProyectoVideoClub;
-
+use Dwes\ProyectoVideoClub\Util;
+use Dwes\ProyectoVideoClub\Util\SoporteYaAlquiladoException;
 
 class Cliente extends VideoClub
 {
@@ -53,6 +54,7 @@ class Cliente extends VideoClub
     public function alquilar(Soporte $soporte) : Cliente
     {
         if ($this->tieneAlquilado($soporte)) {
+            throw new SoporteYaAlquiladoException("Error al alquilar el soporte". $soporte->getTitulo());
             echo "<p>El cliente ya tiene alquilado el soporte <b>" . $soporte->getTitulo() . "</b>.</p>";
             return $this;
         } else if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
