@@ -98,7 +98,7 @@ class Cliente extends VideoClub
         } catch (CupoSuperadoException $e) {
             echo $e->getMessage();
         }
-
+        //FIXME: Error en inicio2.php "Attempt to assign property "alquilado" on null"
         $this->soportesAlquilados[$numSoporte]->alquilado = false;
         unset($this->soportesAlquilados[$numSoporte]);
         echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
