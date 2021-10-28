@@ -68,18 +68,18 @@ class Cliente extends VideoClub
             if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
                 throw new CupoSuperadoException("Error has superado el máximo cupo de Soportes alquilados ");
             }
+
+            $soporte->alquilado = true;
+            $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
+            $this->numSoprtesAlquilados++;
+            echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
+            echo $soporte->mostrarResumen() . "</p>";
+
         } catch (SoporteYaAlquiladoException $e) {
             echo $e->getMessage();
         } catch (CupoSuperadoException $e) {
             echo $e->getMessage();
         }
-
-
-        $soporte->alquilado = true;
-        $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
-        $this->numSoprtesAlquilados++;
-        echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
-        echo $soporte->mostrarResumen() . "</p>";
 
         return $this;
     }
@@ -90,19 +90,16 @@ class Cliente extends VideoClub
             if (!isset($this->soportesAlquilados[$numSoporte])) {
                 throw new SoporteNoEncontradoException("No tienes alquilada esta peli cari ;D");
             }
-            if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
-                throw new CupoSuperadoException("No puedes alquilar más cari devulve algo ;3");
-            }
+
+            $this->soportesAlquilados[$numSoporte]->alquilado = false;
+            unset($this->soportesAlquilados[$numSoporte]);
+            $this->numSoprtesAlquilados--;
+            echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
+
         } catch (SoporteNoEncontradoException $e) {
             echo $e->getMessage();
-        } catch (CupoSuperadoException $e) {
-            echo $e->getMessage();
         }
-        //FIXME: Error en inicio2.php "Attempt to assign property "alquilado" on null"
-        $this->soportesAlquilados[$numSoporte]->alquilado = false;
-        unset($this->soportesAlquilados[$numSoporte]);
-        echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
-
+    
         return $this;
     }
 

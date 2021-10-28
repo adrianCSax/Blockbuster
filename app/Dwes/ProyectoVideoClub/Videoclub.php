@@ -115,7 +115,7 @@ class VideoClub
             }
 
             if (!isset($this->productos[$numeroSoporte])) {
-                throw new SoporteYaAlquiladoException("Soporte no encontrado al realizar el alquiler");
+                throw new SoporteNoEncontradoException("Soporte no encontrado al realizar el alquiler");
             }
 
             $this->socios[$numeroCliente]->alquilar($this->productos[$numeroSoporte]);
@@ -132,11 +132,59 @@ class VideoClub
     }
 
     public function alquilarSocioProductos(string $numeroCliente, array $productosParaAlquilar) {
-        foreach ($productosParaAlquilar as $producto) {
-            if ($this->productos[$producto->getNumero()]->alquilado) {
-                throw new SoporteYaAlquiladoException("Upsi esta cogida :S");
+        try {
+            foreach ($productosParaAlquilar as $producto) {
+                if ($this->productos[$producto]->alquilado) {
+                    // Preguntar a Aitor por esta exception
+                    throw new SoporteYaAlquiladoException("El alquiler múltiple de estos productos no puede ser completado porque " . $this->productos[$producto]->getNumero() . "está alquilado");
+                }
             }
-            $this->alquilaSocioProducto($numeroCliente, $producto->getNumero());
+    
+            foreach ($productosParaAlquilar as $producto) {
+                $this->alquilaSocioProducto($numeroCliente, $this->productos[$producto]->getNumero());
+            }
+        } catch (SoporteYaAlquiladoException $e) {
+            echo $e->getMessage();
+        }
+
+        return $this;
+    }
+
+    public function devolverSocioProducto(string $numeroCliente, int $numeroSoporte) {
+        try {
+            if (!isset($this->socios[$numeroCliente])) {
+                throw new ClienteNoEncontradoException("El Cliente no existe D: <br>");
+            }
+
+            $this->socios[$numeroCliente]->devolver($numeroSoporte);
+
+        } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMessage();
+        }
+        
+        return $this;
+    }
+
+    public function devolverSocioProductos(string $numeroCliente, array $productosParaDevolver) {
+        try {
+            if (!isset($this->socios[$numeroCliente])) {
+                throw new ClienteNoEncontradoException("No existes :$ Pero... puedes ser socio de Blockbuster ;D");
+            }
+
+            foreach ($productosParaDevolver as $producto) {
+                if (!isset($this->socios[$numeroCliente]->getSoportesAlquilados()[$producto])) {
+                    throw new SoporteNoEncontradoException("No tienes este soporte alquilado. No lo habrás robado ¿no? ¬_¬");
+                }
+            }
+    
+            foreach ($productosParaDevolver as $producto) {
+                $this->devolverSocioProducto($numeroCliente, $producto);
+            }
+
+        } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMessage();
+        } catch (SoporteNoEncontradoException) {
+            echo $e->getMessage();
         }
 
         return $this;
