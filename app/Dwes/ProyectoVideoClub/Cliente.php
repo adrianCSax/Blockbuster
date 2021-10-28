@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 //solo indicamos namespace
 //No hacemos los use de Soporte porque están en el mismo namespace
@@ -37,11 +38,13 @@ class Cliente extends VideoClub
         return $this->numero;
     }
 
-    public function getNombre() : string {
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
 
-    public function getNumSoportesAlquilados() : int {
+    public function getNumSoportesAlquilados(): int
+    {
         return $this->numSoprtesAlquilados;
     }
 
@@ -51,19 +54,27 @@ class Cliente extends VideoClub
         return $this;
     }
 
-    public function tieneAlquilado(Soporte $soporte): bool {
+    public function tieneAlquilado(Soporte $soporte): bool
+    {
         return (isset($this->soportesAlquilados[$soporte->getNumero()]));
     }
 
-    public function alquilar(Soporte $soporte) : Cliente
+    public function alquilar(Soporte $soporte): Cliente
     {
-        if ($this->tieneAlquilado($soporte)) {
-            throw new SoporteYaAlquiladoException("Error al alquilar el soporte ". $soporte->getTitulo());
+        try {
+            if ($this->tieneAlquilado($soporte)) {
+                throw new SoporteYaAlquiladoException("Error al alquilar el soporte " . $soporte->getTitulo());
+            }
+            if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
+                throw new CupoSuperadoException("Error has superado el máximo cupo de Soportes alquilados ");
+            }
+        } catch (SoporteYaAlquiladoException $e) {
+            echo $e->getMessage();
+        } catch (CupoSuperadoException $e) {
+            echo $e->getMessage();
         }
-        if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
-            throw new CupoSuperadoException("Error has superado el máximo cupo de Soportes alquilados ");
-        } 
-        
+
+
         $soporte->alquilado = true;
         $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
         $this->numSoprtesAlquilados++;
@@ -75,11 +86,17 @@ class Cliente extends VideoClub
 
     public function devolver(int $numSoporte): Cliente
     {
-        if (!isset($this->soportesAlquilados[$numSoporte])) {
-            throw new SoporteNoEncontradoException("No tienes alquilada esta peli cari ;D");
-        }
-        if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
-            throw new CupoSuperadoException("No puedes alquilar más cari devulve algo ;3");
+        try {
+            if (!isset($this->soportesAlquilados[$numSoporte])) {
+                throw new SoporteNoEncontradoException("No tienes alquilada esta peli cari ;D");
+            }
+            if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
+                throw new CupoSuperadoException("No puedes alquilar más cari devulve algo ;3");
+            }
+        } catch (SoporteNoEncontradoException $e) {
+            echo $e->getMessage();
+        } catch (CupoSuperadoException $e) {
+            echo $e->getMessage();
         }
 
         $this->soportesAlquilados[$numSoporte]->alquilado = false;
@@ -89,7 +106,7 @@ class Cliente extends VideoClub
         return $this;
     }
 
-    public function listaAlquileres() : void
+    public function listaAlquileres(): void
     {
         echo "<b>El cliente tiene " . $this->numSoprtesAlquilados . " soportes alquilados.</b><br>";
         foreach ($this->soportesAlquilados as $soporte) {
