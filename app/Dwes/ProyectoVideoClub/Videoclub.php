@@ -114,6 +114,10 @@ class VideoClub
                 throw new SoporteYaAlquiladoException("Upsi está ya cogida cari :S. No quieres alquilar Salva a Willy ;D <br>");
             }
 
+            if (!isset($this->productos[$numeroSoporte])) {
+                throw new SoporteYaAlquiladoException("Soporte no encontrado al realizar el alquiler");
+            }
+
             $this->socios[$numeroCliente]->alquilar($this->productos[$numeroSoporte]);
 
         } catch (SoporteYaAlquiladoException $e) {
@@ -122,9 +126,7 @@ class VideoClub
             echo $e->getMessage();
         }catch(SoporteNoEncontradoException $e){
             echo $e->getMessage();
-        }catch(ClienteNoEncontradoException $e){
-            echo $e->getMessage();
-        } 
+        }
         
         return $this;
     }
