@@ -13,8 +13,8 @@ if (isset($_POST['enviar'])) {
         $error = "Debes introducir un usuario y contraseña";
         include "index.php";
     } else {
-
-        if ($usuario == array_keys($array)[$usuario] && $password == $array[$usuario]) {
+        //Comprobamos si en el array de keys está el nombre de usuario introducido y si la contraseña coincide
+        if (in_array($usuario, array_keys($array)) && $password == $array[$usuario]) {
             // almacenamos el usuario en la sesión
             session_start();
             $_SESSION['usuario'] = $usuario;
