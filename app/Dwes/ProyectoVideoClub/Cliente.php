@@ -21,7 +21,10 @@ class Cliente extends VideoClub
 
     public function __construct(
         public string $nombre,
+        private string $usuario,
+        private string $password,
         private int $maxAlquilerConcurrente = 3
+
     ) {
         $this->soportesAlquilados = [];
         $this->numSoprtesAlquilados = 0;
@@ -31,6 +34,11 @@ class Cliente extends VideoClub
     public function getSoportesAlquilados(): array
     {
         return $this->soportesAlquilados;
+    }
+
+    public function getUsuario(): string
+    {
+        return $this->usuario;
     }
 
     public function getNumero(): string
@@ -46,6 +54,10 @@ class Cliente extends VideoClub
     public function getNumSoportesAlquilados(): int
     {
         return $this->numSoprtesAlquilados;
+    }
+
+    public function getAlquileres() : array {
+        return $this->soportesAlquilados;
     }
 
     public function setNumero(string $numero): Cliente
@@ -72,8 +84,8 @@ class Cliente extends VideoClub
             $soporte->alquilado = true;
             $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
             $this->numSoprtesAlquilados++;
-            echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
-            echo $soporte->mostrarResumen() . "</p>";
+           // echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
+            //echo $soporte->mostrarResumen() . "</p>";
 
         } catch (SoporteYaAlquiladoException $e) {
             echo $e->getMessage();
@@ -94,7 +106,7 @@ class Cliente extends VideoClub
             $this->soportesAlquilados[$numSoporte]->alquilado = false;
             unset($this->soportesAlquilados[$numSoporte]);
             $this->numSoprtesAlquilados--;
-            echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
+            //echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
 
         } catch (SoporteNoEncontradoException $e) {
             echo $e->getMessage();

@@ -41,10 +41,14 @@ class VideoClub
         return $this->numSocios;
     }
 
+    public function getSocios() : array {
+        return $this->socios;
+    }
+
     public function incluirProducto(Soporte $producto) : VideoClub
     {
         $this->productos[$producto->getNumero()] = $producto;
-        echo "<br>Incluido soporte " . $producto->getNumero();
+        //echo "<br>Incluido soporte " . $producto->getNumero();
         return $this;
     }
 
@@ -73,11 +77,11 @@ class VideoClub
     }
 
 
-    public function incluirSocio(string $nombre, int $maxAlquilerConcurrente = 3) : VideoClub 
+    public function incluirSocio(string $nombre, string $usuario, string $password, int $maxAlquilerConcurrente = 3 ) : VideoClub 
     {
-        $socio = new Cliente($nombre, $maxAlquilerConcurrente);
+        $socio = new Cliente($nombre, $usuario, $password, $maxAlquilerConcurrente);
         $socio->setNumero(strval(count(($this->socios))));
-        echo "<br>Incluido Socio " . $socio->getNumero();
+        //echo "<br>Incluido Socio " . $socio->getNumero();
         $this->socios[count($this->socios)] = $socio;
         $this->numSocios++;
         return $this;
@@ -95,12 +99,13 @@ class VideoClub
     public function listarSocios()
     {
         echo "<p>Listado de " . count($this->socios) . " socios del videoclub";
-        echo "<ol>";
+        echo "<ul>";
         foreach ($this->socios as $socio) {
-            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->getNombre() . "<br>";
-            echo "Alquileres actuales: " . $socio->getNumSoportesAlquilados();
+            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->getNombre() . "<br>" ;
+            echo "<b>-Nombre de usuario: " . $socio->getUsuario() . "<br>";
+            echo "Alquileres actuales: " . $socio->getNumSoportesAlquilados() . "</li>";
         }
-        echo "</ol>";
+        echo "</ul>";
     }
 
     public function alquilaSocioProducto(string $numeroCliente, string $numeroSoporte) : VideoClub {

@@ -14,7 +14,9 @@ $vc->incluirJuego("God of War", 19.99, "PS4", 1, 1)->incluirJuego("The Last of U
 /* $vc->listarProductos();
  */
 //voy a crear algunos socios 
-$vc->incluirSocio("Amancio Ortega")->incluirSocio("Pablo Picasso", 2);
+$vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
+$vc->incluirSocio("Cliente Feliz", "usuario", "usuario");
+
 
 try {
     $vc->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 3)->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 6);
