@@ -1,4 +1,7 @@
 <?php
+
+include "vendor/autoload.php";
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -6,6 +9,11 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION["clientes"])) {
     $arrayClientes = $_SESSION["clientes"];
 }
+
+if (!isset($error)) {
+    $error = "";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,24 +48,21 @@ if (isset($_SESSION["clientes"])) {
 <body>
     <h1>CREACIÓN DE CLIENTE</h1>
     <p><?= $error ?></p>
+    <form action="updateCliente.php" method="post">
+    <label for="seleccionCliente">Choose a cliente:</label>
     <select id="clientes" name="listaClientes">
         <?php foreach ($arrayClientes as $cliente) { ?>
-
-            <option value="<?php $cliente->getUsuario(); ?>"><?= $cliente->getNombre(); ?></option>
-
+            <option value="<?= $cliente->getUsuario(); ?>"><?= $cliente->getNombre(); ?></option>
         <?php } ?>
-
     </select>
-    <form action="createCliente.php" method="post">
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre" required>
         <label for="email">Usuario: </label>
         <input type="text" name="user" id="user" required>
         <label for="password">Contraseña: </label>
         <input type="password" name="password" id="password" required>
-        <input type="submit" value="Crear usuario">
+        <input type="submit" value="Actualizar usuario">
     </form>
-
 </body>
 
 </html>
