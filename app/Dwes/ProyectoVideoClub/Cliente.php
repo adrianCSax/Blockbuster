@@ -51,6 +51,10 @@ class Cliente extends VideoClub
         return $this->nombre;
     }
 
+    public function getPassword(): string {
+        return $this->password;
+    }
+
     public function getNumSoportesAlquilados(): int
     {
         return $this->numSoprtesAlquilados;

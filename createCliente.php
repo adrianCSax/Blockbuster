@@ -1,5 +1,9 @@
-<?php 
-    if(!isset($_SESSION)) {
+<?php
+
+include "vendor/autoload.php";
+use Dwes\ProyectoVideoClub\Cliente;
+
+if(!isset($_SESSION)) {
         session_start();
     }
 
@@ -20,6 +24,17 @@
         $nombre = trim(htmlspecialchars($_POST["nombre"]));
         $user = trim(htmlspecialchars($_POST["user"]));
         $password = trim(htmlspecialchars($_POST["password"]));
+
+        if (!isset($_SESSION["clientes"])) {
+            $_SESSION["clientes"] = [];
+        }
+
+        $cliente = new Cliente($nombre, $user, $password);
+        $_SESSION["clientes"][] = $cliente;
+
+        include "mainAdmin.php";
+
+
     }else {
         $_SESSION["error"] = "Datos incorrectos";
         include "formCreateCliente.php";

@@ -5,6 +5,10 @@ include "vendor/autoload.php";
 use Dwes\ProyectoVideoClub\Util\VideoClubException;
 use Dwes\ProyectoVideoClub\VideoClub;
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 $vc = new Videoclub("Severo 8A");
 
 //voy a incluir unos cuantos soportes de prueba 
@@ -16,6 +20,15 @@ $vc->incluirJuego("God of War", 19.99, "PS4", 1, 1)->incluirJuego("The Last of U
 //voy a crear algunos socios 
 $vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
 $vc->incluirSocio("Cliente Feliz", "usuario", "usuario");
+
+if (isset($_SESSION["clientes"])) {
+    $cliente = $_SESSION["clientes"];
+
+    foreach ($_SESSION["clientes"] as $cliente) {
+        $vc->incluirSocio($cliente->getNombre(), $cliente->getUsuario(), $cliente->getPassword());
+    }
+}
+
 
 
 try {

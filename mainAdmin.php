@@ -27,6 +27,8 @@ if(!isset($_SESSION)) {
     <h1>Bienvenido <?= $_SESSION['usuario'] ?></h1>
     <p>Pulse <a href="logout.php">aquí</a> para salir</p>
     <p><a href="formCreateCliente.php">Formulario creación de cliente</a></p>
+    <p><a href="formCreateCliente.php">Formulario creación de cliente</a></p>
+
     <?php $vc->listarSocios(); echo "<br>"; $vc->listarProductos() ?>
 </body>
 </html>
