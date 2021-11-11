@@ -1,8 +1,6 @@
 <?php
     // Recuperamos la información de la sesión
 
-use Dwes\ProyectoVideoClub\VideoClub;
-
 if(!isset($_SESSION)) {
         session_start();
     }

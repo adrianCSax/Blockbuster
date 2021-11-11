@@ -13,11 +13,7 @@ if(!isset($_SESSION)) {
     }
 
     function validar (string $campo) : bool {
-        if (isset($campo) && !empty($campo)) {
-            return true;
-        }else {
-            return false;
-        }
+        return (isset($campo) && !empty($campo));
     }
 
     if (validar($_POST["nombre"]) && validar($_POST["user"]) && validar($_POST["password"]) ) {

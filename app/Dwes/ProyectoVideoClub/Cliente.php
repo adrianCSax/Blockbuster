@@ -64,6 +64,21 @@ class Cliente extends VideoClub
         return $this->soportesAlquilados;
     }
 
+    public function setPassword(string $password) : Cliente {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setNombre(string $nombre) : Cliente {
+        $this->nombre = $nombre;
+        return $this;
+    }
+    
+    public function setUsuario(string $usuario) : Cliente {
+        $this->usuario = $usuario;
+        return $this;
+    }
+
     public function setNumero(string $numero): Cliente
     {
         $this->numero = $numero;

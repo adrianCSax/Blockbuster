@@ -13,10 +13,16 @@
     }
     include_once "inicio3.php";
 
-    $vc->getSocios();
+    
 
-    foreach ($vc->getSocios() as $socio) {
+    if (!isset($_SESSION["clientes"])) {
+        $_SESSION["clientes"] = [];
+    } else {
+        $arrayClientes = $vc->getSocios();
+        $_SESSION["clientes"] = $arrayClientes;
+    }
 
+    foreach ($vc->$arrayClientes as $socio) {
         if ($socio->getUsuario() == $_SESSION["usuario"]) {
             $user = $socio;
         }
@@ -35,6 +41,7 @@
 <body>
     <h1>Bienvenido <?= $_SESSION['usuario'] ?></h1>
     <p>Pulse <a href="logout.php">aquí</a> para salir</p>
+    <p><a href="formUpdateCliente.php">Formulario de actualización de cliente</a></p>
     <p>Alquileres</p>
     <ul>
         <?php foreach ($user->getAlquileres() as $alquiler) { ?>
