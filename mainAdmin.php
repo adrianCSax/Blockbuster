@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin") {
     die("<span style='font-size: 1.5em'>Error - debe <a href='index.php'>identificarse</a>.<br /> Vete de aquí,</span> <p><b style='font-size: 6em '>🤡¡PAYASO!🤡</b></p>");
 }
 include "inicio3.php";
-
+var_dump($vc->getSocios());
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,7 +46,7 @@ include "inicio3.php";
     <p><a href="formCreateCliente.php">Formulario creación de cliente</a></p>
     <p><a href="formUpdateCliente.php">Formulario de actualización de cliente</a></p>
 
-    <form action="updateCliente.php" method="post">
+    <form action="removeCliente.php" method="post">
         <label for="seleccionCliente">Choose a cliente:</label>
 
         <select id="clientes" name="selectedCliente">

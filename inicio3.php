@@ -21,7 +21,6 @@ $vc->incluirJuego("God of War", 19.99, "PS4", 1, 1)->incluirJuego("The Last of U
 
 
 if (isset($_SESSION["clientes"])) {
-
     $vc->setSocios($_SESSION["clientes"]);
 } else {
     $vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
