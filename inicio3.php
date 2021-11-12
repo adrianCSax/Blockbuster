@@ -1,5 +1,4 @@
 <?php
-include "vendor/autoload.php";
 // No incluimos nada más
 
 use Dwes\ProyectoVideoClub\Util\VideoClubException;
@@ -29,12 +28,11 @@ if (isset($_SESSION["clientes"])) {
 }
 
 
-
-try {
-    $vc->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 3)->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 6);
-} catch (VideoClubException $e) {
-    echo "Se ha producido un error: " . $e->getMessage();
-}
+// try {
+//     $vc->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 3)->alquilaSocioProducto(1, 2)->alquilaSocioProducto(1, 6);
+// } catch (VideoClubException $e) {
+//     echo "Se ha producido un error: " . $e->getMessage();
+// }
 
 //listo los socios 
 // $vc->listarSocios();

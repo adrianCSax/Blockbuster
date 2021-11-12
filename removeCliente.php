@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 
 function error () {
     $_SESSION['error'] = "No existe el cliente";
-    include "mainAdmin.php";
+    include_once "mainAdmin.php";
 }
 
 $valido = false;
@@ -22,7 +22,7 @@ if (isset($_POST["selectedCliente"])) {
 }
 
 if ($valido) {
-    include "mainAdmin.php";
+    include_once "mainAdmin.php";
 }else {
     error();
 }

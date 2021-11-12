@@ -13,7 +13,7 @@ if (!isset($_SESSION)) {
 
 function error () {
     $_SESSION['error'] = "No existe el cliente";
-    include "formUpdateCliente.php";
+    include_once "formUpdateCliente.php";
 }
 
 $valido = false;
@@ -40,7 +40,7 @@ if (isset($_POST["selectedCliente"])) {
 }
 
 if ($valido) {
-    $_SESSION["usuario"]=="admin"?include "mainAdmin.php":include "mainCliente.php";
+    $_SESSION["usuario"]=="admin"?include_once "mainAdmin.php":include_once "mainCliente.php";
 
 }else {
     error();

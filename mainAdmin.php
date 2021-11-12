@@ -8,7 +8,8 @@
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin") {
     die("<span style='font-size: 1.5em'>Error - debe <a href='index.php'>identificarse</a>.<br /> Vete de aquí,</span> <p><b style='font-size: 6em '>🤡¡PAYASO!🤡</b></p>");
 }
-include "inicio3.php";
+include_once "inicio3.php";
+
 var_dump($vc->getSocios());
 ?>
 <!DOCTYPE html>

@@ -49,7 +49,6 @@ class VideoClub
         $this->socios = $socios;
     } 
 
-
     public function incluirProducto(Soporte $producto) : VideoClub
     {
         $this->productos[$producto->getNumero()] = $producto;
@@ -81,7 +80,7 @@ class VideoClub
         return $this;
     }
 
-
+    // Hacer asociativo
     public function incluirSocio(string $nombre, string $usuario, string $password, int $maxAlquilerConcurrente = 3 ) : VideoClub 
     {
         $socio = new Cliente($nombre, $usuario, $password, $maxAlquilerConcurrente);
@@ -174,7 +173,7 @@ class VideoClub
         
         return $this;
     }
-
+    
     public function devolverSocioProductos(string $numeroCliente, array $productosParaDevolver) {
         try {
             if (!isset($this->socios[$numeroCliente])) {

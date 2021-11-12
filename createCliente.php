@@ -28,12 +28,12 @@ if(!isset($_SESSION)) {
         $cliente = new Cliente($nombre, $user, $password);
         $_SESSION["clientes"][] = $cliente;
 
-        include "mainAdmin.php";
+        include_once "mainAdmin.php";
 
 
     }else {
         $_SESSION["error"] = "Datos incorrectos";
-        include "formCreateCliente.php";
+        include_once "formCreateCliente.php";
     }
 
 
