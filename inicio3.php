@@ -18,15 +18,15 @@ $vc->incluirJuego("God of War", 19.99, "PS4", 1, 1)->incluirJuego("The Last of U
 /* $vc->listarProductos();
  */
 //voy a crear algunos socios 
-$vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
-$vc->incluirSocio("Cliente Feliz", "usuario", "usuario");
+
 
 if (isset($_SESSION["clientes"])) {
-    $cliente = $_SESSION["clientes"];
 
-    foreach ($_SESSION["clientes"] as $cliente) {
-        $vc->incluirSocio($cliente->getNombre(), $cliente->getUsuario(), $cliente->getPassword());
-    }
+    $vc->setSocios($_SESSION["clientes"]);
+} else {
+    $vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
+    $vc->incluirSocio("Cliente Feliz", "usuario", "usuario");
+    $_SESSION["clientes"] = $vc->getSocios();
 }
 
 

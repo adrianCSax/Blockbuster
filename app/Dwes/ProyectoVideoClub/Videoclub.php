@@ -45,6 +45,11 @@ class VideoClub
         return $this->socios;
     }
 
+    public function setSocios(array $socios) {
+        $this->socios = $socios;
+    } 
+
+
     public function incluirProducto(Soporte $producto) : VideoClub
     {
         $this->productos[$producto->getNumero()] = $producto;

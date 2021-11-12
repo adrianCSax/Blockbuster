@@ -15,18 +15,17 @@
 
     
 
-    if (!isset($_SESSION["clientes"])) {
+  /*   if (!isset($_SESSION["clientes"])) {
         $_SESSION["clientes"] = [];
     } else {
         $arrayClientes = $vc->getSocios();
         $_SESSION["clientes"] = $arrayClientes;
     }
-
-    foreach ($vc->$arrayClientes as $socio) {
+ */
+    foreach ($vc->getSocios() as $socio) {
         if ($socio->getUsuario() == $_SESSION["usuario"]) {
             $user = $socio;
-        }
-        
+        }       
     }
 
 

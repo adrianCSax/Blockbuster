@@ -1,9 +1,5 @@
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 
 //Array con usuarios y constraseñas
 $arrayUserPassword = ["usuario" => "usuario", "admin" => "admin", "amancio"=> "amancio", "picasso"=> "picasso"];
