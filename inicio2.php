@@ -1,5 +1,5 @@
 <?php
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 use Dwes\ProyectoVideoClub\CintaVideo;
 use Dwes\ProyectoVideoClub\Dvd;
@@ -7,8 +7,8 @@ use Dwes\ProyectoVideoClub\Juego;
 use Dwes\ProyectoVideoClub\Cliente;
 
 //instanciamos un par de objetos cliente
-$cliente1 = new Cliente("Bruce Wayne", 23);
-$cliente2 = new Cliente("Clark Kent", 33);
+// $cliente1 = new Cliente("Bruce Wayne", 23);
+// $cliente2 = new Cliente("Clark Kent", 33);
 
 //mostramos el número de cada cliente creado 
 echo "<br>El identificador del cliente 1 es: " . $cliente1->getNumero();

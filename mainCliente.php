@@ -1,6 +1,6 @@
 <?php
-
-
+include_once "vendor/autoload.php";
+//¿por qué poniendo esto al principio si funciona bien con el headerlocation?
 
     // Recuperamos la información de la sesión
     if(!isset($_SESSION)) {

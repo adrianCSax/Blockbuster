@@ -1,12 +1,15 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 // No incluimos nada más
 
 use Dwes\ProyectoVideoClub\Util\VideoClubException;
 use Dwes\ProyectoVideoClub\VideoClub;
+include_once "vendor/autoload.php";
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+
+
 
 $vc = new Videoclub("Severo 8A");
 

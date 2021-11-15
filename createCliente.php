@@ -1,11 +1,11 @@
 <?php
 
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 use Dwes\ProyectoVideoClub\Cliente;
 
 if(!isset($_SESSION)) {
-        session_start();
-    }
+    session_start();
+}
 
     // Y comprobamos que el usuario se haya autentificado
     if (!isset($_SESSION['usuario']) || $_SESSION["usuario"] != "admin") {
@@ -26,16 +26,14 @@ if(!isset($_SESSION)) {
         }
 
         $cliente = new Cliente($nombre, $user, $password);
+        $cliente->setNumero(count($_SESSION["clientes"]));
         $_SESSION["clientes"][] = $cliente;
 
-        include_once "mainAdmin.php";
-
+        header("Location: mainAdmin.php");
 
     }else {
         $_SESSION["error"] = "Datos incorrectos";
         include_once "formCreateCliente.php";
     }
-
-
 
 ?>

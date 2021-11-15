@@ -1,7 +1,7 @@
 <?php
 
 // Recuperamos la información de la sesión
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 if(!isset($_SESSION)) {
     session_start();
@@ -29,7 +29,8 @@ if (isset($_POST['enviar']) && !isset($_SESSION['usuario'])) {
             $_SESSION["password"] = $password;
             // cargamos la página principal
             //Si es admin cargamos mainAdminphp si no cargamos main php
-            $usuario=="admin"? include_once "mainAdmin.php" : include_once "mainCliente.php";
+            $usuario=="admin"?  header("Location: mainAdmin.php") : header("Location: mainCliente.php");
+
         } else {
             // Si las credenciales no son válidas, se vuelven a pedir
             $error = "Usuario o contraseña no válidos!";
@@ -38,5 +39,5 @@ if (isset($_POST['enviar']) && !isset($_SESSION['usuario'])) {
     }
 } else {
     
-    $_SESSION['usuario']=="admin" ? include_once "mainAdmin.php" : include_once "mainCliente.php";
+    $_SESSION['usuario']=="admin" ? header("Location: mainAdmin.php") : header("Location: mainCliente.php");
 }

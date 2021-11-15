@@ -5,7 +5,7 @@ function validar (string $campo) : bool {
 }
 
 
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 if (!isset($_SESSION)) {
     session_start();
@@ -45,7 +45,7 @@ if (isset($_POST["selectedCliente"])) {
 }
 
 if ($valido) {
-    $_SESSION["usuario"]=="admin"?include_once "mainAdmin.php":include_once "mainCliente.php";
+    $_SESSION["usuario"]=="admin"?header("Location: mainAdmin.php"):header("Location: mainCliente.php");
 
 }else {
     error();

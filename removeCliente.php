@@ -1,5 +1,5 @@
 <?php
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 if (!isset($_SESSION)) {
     session_start();
@@ -22,7 +22,7 @@ if (isset($_POST["selectedCliente"])) {
 }
 
 if ($valido) {
-    include_once "mainAdmin.php";
+    header("Location: mainAdmin.php");
 }else {
     error();
 }

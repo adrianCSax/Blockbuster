@@ -1,15 +1,21 @@
 <?php
 // Recuperamos la información de la sesión
+include_once "vendor/autoload.php"; //Si no se pone al crear un cliente y hacer header se queda vacío
+//Si se pone despues de issetsession tampoco funciona 
 
 //echo var_dump($_SESSION["usuario"]);
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 
 
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin") {
     die("<span style='font-size: 1.5em'>Error - debe <a href='index.php'>identificarse</a>.<br /> Vete de aquí,</span> <p><b style='font-size: 6em '>🤡¡PAYASO!🤡</b></p>");
 }
-include_once "inicio3.php";
 
+include_once "inicio3.php";
 
 ?>
 <!DOCTYPE html>

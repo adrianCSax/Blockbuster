@@ -1,5 +1,5 @@
 <?php
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 //si quiero usar algo fuera del namespace raiz si que tengo que hacer un use
 
