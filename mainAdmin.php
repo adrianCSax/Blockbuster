@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin") {
 }
 include_once "inicio3.php";
 
-var_dump($vc->getSocios());
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

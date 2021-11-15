@@ -13,7 +13,7 @@ $arrayUserPassword = ["usuario" => "usuario", "admin" => "admin", "amancio"=> "a
 
 // Comprobamos si ya se ha enviado el formulario
 if (isset($_POST['enviar']) && !isset($_SESSION['usuario'])) {
-    echo "Te metes donde no te llaman";
+
     $usuario = $_POST['inputUsuario'];
     $password = $_POST['inputPassword'];
 
@@ -37,6 +37,6 @@ if (isset($_POST['enviar']) && !isset($_SESSION['usuario'])) {
         }
     }
 } else {
-    echo "hola, soy usuario activo";
+    
     $_SESSION['usuario']=="admin" ? include_once "mainAdmin.php" : include_once "mainCliente.php";
 }

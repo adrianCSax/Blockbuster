@@ -20,8 +20,9 @@ $valido = false;
 
 if (isset($_POST["selectedCliente"])) {
     foreach ($_SESSION['clientes'] as $cliente) {
-        if (($cliente->getUsuario() == $_POST["selectedCliente"] && $cliente->getUsuario() == $_SESSION["usuario"] ) 
-            || $_SESSION["usuario"] == "admin") {     
+
+        if ($cliente->getUsuario() == $_POST["selectedCliente"] && ($cliente->getUsuario() == $_SESSION["usuario"] 
+            || $_SESSION["usuario"] == "admin")) {     
                 $valido = true;
 
             if (validar($_POST["nombre"])) {
@@ -29,7 +30,11 @@ if (isset($_POST["selectedCliente"])) {
             }
             if (validar($_POST["user"])) {
                 $cliente->setUsuario($_POST["user"]);
-                $_SESSION["usuario"] = $_POST["user"];
+                //Si hemos iniciado en admin no modificar el usuario de la sesión
+                if ($_SESSION["usuario"] != "admin") {
+                    $_SESSION["usuario"] = $_POST["user"];
+                }
+                
             }
             if (validar($_POST["password"])) { 
                 $cliente->setPassword($_POST["password"]);
