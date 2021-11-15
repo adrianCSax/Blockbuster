@@ -61,8 +61,7 @@ include_once "inicio3.php";
                 <option value="<?= $cliente->getUsuario(); ?>"><?= $cliente->getNombre(); ?></option>
             <?php } ?>
         </select>
-       
-        <input type="submit" value="Eliminar usuario">
+       <button onclick="confirm('¿Estás seguro?')">Borrar usuario</button>
     </form>
 
     <?php $vc->listarSocios();
