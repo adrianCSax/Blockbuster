@@ -9,7 +9,6 @@ if(!isset($_SESSION)) {
 }
 
 
-
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] != "admin") {
     die("<span style='font-size: 1.5em'>Error - debe <a href='index.php'>identificarse</a>.<br /> Vete de aquí,</span> <p><b style='font-size: 6em '>🤡¡PAYASO!🤡</b></p>");
@@ -61,7 +60,7 @@ include_once "inicio3.php";
                 <option value="<?= $cliente->getUsuario(); ?>"><?= $cliente->getNombre(); ?></option>
             <?php } ?>
         </select>
-       <button onclick="confirm('¿Estás seguro?')">Borrar usuario</button>
+       <button type="submit" onclick="confirm('¿Estás seguro?')">Borrar usuario</button>
     </form>
 
     <?php $vc->listarSocios();
