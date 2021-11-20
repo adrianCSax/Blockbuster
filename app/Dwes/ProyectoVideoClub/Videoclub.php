@@ -45,6 +45,10 @@ class VideoClub
         return $this->socios;
     }
 
+    public function getProductos() : array {
+        return $this->productos;
+    }
+
     public function setSocios(array $socios) {
         $this->socios = $socios;
     } 

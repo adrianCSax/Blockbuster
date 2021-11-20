@@ -28,6 +28,8 @@ if (isset($_SESSION["clientes"])) {
     $vc->incluirSocio("Amancio Ortega", "amancio", "amancio")->incluirSocio("Pablo Picasso", "picasso", "picasso", 2);
     $vc->incluirSocio("Cliente Feliz", "usuario", "usuario");
     $_SESSION["clientes"] = $vc->getSocios();
+    $_SESSION["clientes"][0]->devolver(1); //Probando a lanzar excepción
+    $_SESSION["clientes"][0]->alquilar($vc->getProductos()[0]); //Alquilamos soporte 1
 }
 
 

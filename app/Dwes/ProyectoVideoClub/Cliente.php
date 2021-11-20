@@ -9,7 +9,9 @@ namespace Dwes\ProyectoVideoClub;
 use Dwes\ProyectoVideoClub\Util\CupoSuperadoException;
 use Dwes\ProyectoVideoClub\Util\SoporteNoEncontradoException;
 use Dwes\ProyectoVideoClub\Util\SoporteYaAlquiladoException;
+use Monolog\Logger;
 use \Exception;
+use Monolog\Handler\RotatingFileHandler;
 
 class Cliente extends VideoClub
 
@@ -18,17 +20,21 @@ class Cliente extends VideoClub
     private array $soportesAlquilados;
     private int $numSoprtesAlquilados;
     private string $numero;
+    private Logger $videoLogger;
+
 
     public function __construct(
         public string $nombre,
         private string $usuario,
         private string $password,
-        private int $maxAlquilerConcurrente = 3
-
+        private int $maxAlquilerConcurrente = 3,
     ) {
         $this->soportesAlquilados = [];
         $this->numSoprtesAlquilados = 0;
         $this->numero = "0";
+        $this->videoLogger = new Logger ("VideoclubLogger");
+        $this->videoLogger->pushHandler(new RotatingFileHandler("logs/videoclub.log",0,Logger::DEBUG));
+
     }
 
     public function getSoportesAlquilados(): array
@@ -94,21 +100,28 @@ class Cliente extends VideoClub
     {
         try {
             if ($this->tieneAlquilado($soporte)) {
+                //$this->videoLogger->warning("Error al alquilar el soporte " . $soporte->getTitulo());
                 throw new SoporteYaAlquiladoException("Error al alquilar el soporte " . $soporte->getTitulo());
             }
             if ($this->numSoprtesAlquilados >= $this->maxAlquilerConcurrente) {
+                //$this->videoLogger->warning("Error has superado el máximo cupo de Soportes alquilados");
                 throw new CupoSuperadoException("Error has superado el máximo cupo de Soportes alquilados ");
             }
 
             $soporte->alquilado = true;
             $this->soportesAlquilados[$soporte->getNumero()] = $soporte;
             $this->numSoprtesAlquilados++;
+
+            $this->videoLogger->info("Alquilado soporte " . $soporte->getTitulo() . " a: " . $this->nombre);
+
            // echo "<p><strong>Alquilado soporte a: </strong>" . $this->nombre;
             //echo $soporte->mostrarResumen() . "</p>";
 
         } catch (SoporteYaAlquiladoException $e) {
+            $this->videoLogger->warning($e);
             echo $e->getMessage();
         } catch (CupoSuperadoException $e) {
+            $this->videoLogger->warning($e);
             echo $e->getMessage();
         }
 
@@ -125,9 +138,12 @@ class Cliente extends VideoClub
             $this->soportesAlquilados[$numSoporte]->alquilado = false;
             unset($this->soportesAlquilados[$numSoporte]);
             $this->numSoprtesAlquilados--;
+            $this->videoLogger->info("El soporte " . $numSoporte . " ha sido devuelto");
+
             //echo "<p>El soporte <b>" . $numSoporte . "</b> ha sido devuelto.</p>";
 
         } catch (SoporteNoEncontradoException $e) {
+            $this->videoLogger->warning($e); //Puesto aquí para ver lo que muestra.
             echo $e->getMessage();
         }
     
