@@ -43,6 +43,7 @@ include_once "inicio3.php";
             display: inline;
             margin-right: .5em;
         }
+
     </style>
 </head>
 
