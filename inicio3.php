@@ -33,6 +33,9 @@ if (isset($_SESSION["clientes"])) {
     $vc->alquilaSocioProducto("0", "8");
     $vc->alquilaSocioProducto("1", "7");
     $vc->alquilarSocioProductos("0", [7,0]);
+    // echo "<pre>";
+    // echo print_r($vc->getProductos());
+    // echo "</pre>";
     $_SESSION["clientes"] = $vc->getSocios();
 }
 

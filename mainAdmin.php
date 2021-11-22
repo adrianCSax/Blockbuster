@@ -4,7 +4,7 @@ include_once "vendor/autoload.php"; //Si no se pone al crear un cliente y hacer 
 //Si se pone despues de issetsession tampoco funciona 
 
 //echo var_dump($_SESSION["usuario"]);
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -43,7 +43,6 @@ include_once "inicio3.php";
             display: inline;
             margin-right: .5em;
         }
-
     </style>
 </head>
 
@@ -53,7 +52,7 @@ include_once "inicio3.php";
     <p><a href="formCreateCliente.php">Formulario creación de cliente</a></p>
     <p><a href="formUpdateCliente.php">Formulario de actualización de cliente</a></p>
 
-    <form action="removeCliente.php" method="post">
+    <form onsubmit="return confirm('¿Estás seguro?');" action="removeCliente.php" method="post">
         <label for="seleccionCliente">Choose a cliente:</label>
 
         <select id="clientes" name="selectedCliente">
@@ -61,9 +60,8 @@ include_once "inicio3.php";
                 <option value="<?= $cliente->getUsuario(); ?>"><?= $cliente->getNombre(); ?></option>
             <?php } ?>
         </select>
-       <button type="submit" onclick="confirm('¿Estás seguro?')">Borrar usuario</button>
+        <button type="submit">Borrar usuario</button>
     </form>
-
     <?php $vc->listarSocios();
     echo "<br>";
     $vc->listarProductos() ?>
