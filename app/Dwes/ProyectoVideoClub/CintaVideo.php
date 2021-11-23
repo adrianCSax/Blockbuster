@@ -1,6 +1,8 @@
 <?php 
 
 namespace Dwes\ProyectoVideoClub;
+require 'vendor/autoload.php';
+use \Goutte\Client;
 
 class CintaVideo extends Soporte {
     public function __construct(string $titulo, string $numero, float $precio, 
@@ -13,5 +15,12 @@ class CintaVideo extends Soporte {
         echo "<br>Película en VHS:";
         parent::mostrarResumen();
         echo "Duración: " . $this->duracion . " " . $min;
+    }
+
+    public function getPuntuacion() {
+        $httpClient = new Client();
+        $response = $httpClient->request('GET', $this->getMetacritic());
+
+        $response->filter('div[class="ms_wrapper"] .metascore_w')->text();
     }
 }

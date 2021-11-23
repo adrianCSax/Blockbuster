@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+// (?:https?:\/\/)?(?:[^?\/\s]+[?\/])(.*) RegEx para validar URL
 /*
     Crea una clase para almacenar soportes (Soporte.php). Esta clase será la clase padre de los diferentes soportes con los que trabaje nuestro videoclub (cintas de vídeo, videojuegos, etc...):
         Crea el constructor que inicialice sus propiedades. Fíjate que la clase no tiene métodos setters.
@@ -10,6 +11,8 @@ declare(strict_types=1);
 */
 
 namespace Dwes\ProyectoVideoClub;
+
+use Exception;
 
 include_once "Resumible.php";
 
@@ -24,6 +27,7 @@ include_once "Resumible.php";
 abstract class Soporte implements Resumible {
 
     private static float $IVA = 1.21;
+    private string $metacritic;
 
     public function __construct(
         public string $titulo,
@@ -36,6 +40,10 @@ abstract class Soporte implements Resumible {
         return $this->titulo;
     }
 
+    public function getMetacritic() : string {
+        return $this->metacritic;
+    }
+
     public function getNumero(): string {
         return $this->numero;
     }
@@ -46,6 +54,12 @@ abstract class Soporte implements Resumible {
 
     public function getPrecioConIva(): float {
         return $this->precio * self::$IVA;
+    }
+
+    abstract public function getPuntuacion();
+
+    public function setMetacritic(string $metacritic) {
+        $this->metacritic = $metacritic;
     }
 
     public function mostrarResumen() : void {

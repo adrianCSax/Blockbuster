@@ -9,7 +9,8 @@
         "psr-4": {"Dwes\\": "app/Dwes"}
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "fabpot/goutte": "^4.0"
     },
     "scripts": {
         "test": "phpunit --testdox --colors tests"
