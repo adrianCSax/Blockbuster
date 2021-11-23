@@ -14,7 +14,7 @@ include_once "vendor/autoload.php";
 $vc = new Videoclub("Severo 8A");
 
 //voy a incluir unos cuantos soportes de prueba 
-$vc->incluirJuego('https://www.metacritic.com/game/playstation-4/god-of-war',"God of War", 19.99, "PS4", 1, 1)->incluirJuego('https://www.metacritic.com/game/playstation-4/the-last-of-us-part-ii',"The Last of Us Part II", 49.99, "PS4", 1, 1)->incluirDvd('https://www.metacritic.com/movie/inception',"Origen", 4.5, "es,en,fr", "16:9")->incluirDvd("El Imperio Contraataca", 3, "es,en", "16:9")->incluirCintaVideo('https://www.metacritic.com/movie/ghostbusters',"Los cazafantasmas", 3.5, 107)->incluirCintaVideo('https://www.metacritic.com/movie/the-name-of-the-rose',"El nombre de la Rosa", 1.5, 140);
+$vc->incluirJuego('https://www.metacritic.com/game/playstation-4/god-of-war',"God of War", 19.99, "PS4", 1, 1)->incluirJuego('https://www.metacritic.com/game/playstation-4/the-last-of-us-part-ii',"The Last of Us Part II", 49.99, "PS4", 1, 1)->incluirDvd('https://www.metacritic.com/movie/inception',"Origen", 4.5, "es,en,fr", "16:9")->incluirDvd('https://www.metacritic.com/movie/star-wars-episode-v---the-empire-strikes-back',"El Imperio Contraataca", 3, "es,en", "16:9")->incluirCintaVideo('https://www.metacritic.com/movie/ghostbusters',"Los cazafantasmas", 3.5, 107)->incluirCintaVideo('https://www.metacritic.com/movie/the-name-of-the-rose',"El nombre de la Rosa", 1.5, 140);
 //listo los productos 
 /* $vc->listarProductos();
  */
