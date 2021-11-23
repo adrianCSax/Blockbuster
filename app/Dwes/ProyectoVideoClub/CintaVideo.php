@@ -17,10 +17,10 @@ class CintaVideo extends Soporte {
         echo "Duración: " . $this->duracion . " " . $min;
     }
 
-    public function getPuntuacion() {
+    public function getPuntuacion() : int {
         $httpClient = new Client();
         $response = $httpClient->request('GET', $this->getMetacritic());
-
-        $response->filter('div[class="ms_wrapper"] .metascore_w')->text();
+        return intval($response->filter('div[class="ms_wrapper"] .metascore_w')->text());
+        ;
     }
 }

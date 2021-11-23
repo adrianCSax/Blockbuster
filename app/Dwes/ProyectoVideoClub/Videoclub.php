@@ -170,11 +170,14 @@ class VideoClub
         $arrayLog = [$this->socios[$numeroCliente], $productosParaAlquilar];
         try {
             foreach ($productosParaAlquilar as $producto) {
-                if ($this->productos[$producto]->alquilado) {
-                    $arrayLog[] = $producto;
-                    // Preguntar a Aitor por esta exception
-                    throw new SoporteYaAlquiladoException("El alquiler múltiple de estos productos no puede ser completado porque " . $this->productos[$producto]->getNumero() . "está alquilado");
+                if (isset($this->productos[$producto])) {
+                    if ($this->productos[$producto]->alquilado) {
+                        $arrayLog[] = $producto;
+                        // Preguntar a Aitor por esta exception
+                        throw new SoporteYaAlquiladoException("El alquiler múltiple de estos productos no puede ser completado porque " . $this->productos[$producto]->getNumero() . "está alquilado");
+                    }
                 }
+                
             }
 
             foreach ($productosParaAlquilar as $producto) {

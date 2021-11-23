@@ -2,7 +2,6 @@
 
 namespace Dwes\ProyectoVideoClub;
 
-require 'vendor/autoload.php';
 use \Goutte\Client;
 class Juego extends Soporte {
 
@@ -32,10 +31,10 @@ class Juego extends Soporte {
         echo $this->muestraJugadoresPosibles();
     }
 
-    public function getPuntuacion() {
+    public function getPuntuacion() : int {
         $httpClient = new Client();
         $response = $httpClient->request('GET', $this->getMetacritic());
 
-        $response->filter('span[itemprop="ratingValue"]')->text();
+        return intval($response->filter('span[itemprop="ratingValue"]')->text());
     }
 }

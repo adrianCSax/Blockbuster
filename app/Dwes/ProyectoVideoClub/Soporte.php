@@ -56,7 +56,7 @@ abstract class Soporte implements Resumible {
         return $this->precio * self::$IVA;
     }
 
-    abstract public function getPuntuacion();
+    abstract public function getPuntuacion() :int;
 
     public function setMetacritic(string $metacritic) {
         $this->metacritic = $metacritic;
