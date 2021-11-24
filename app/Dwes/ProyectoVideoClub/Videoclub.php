@@ -118,6 +118,7 @@ class VideoClub
     {
         foreach ($this->productos as $producto) { 
           $producto->mostrarResumen();
+            echo "<br>";
         }
     }
 
@@ -126,9 +127,9 @@ class VideoClub
         echo "<p>Listado de " . count($this->socios) . " socios del videoclub";
         echo "<ul>";
         foreach ($this->socios as $socio) {
-            echo "<li><b>-Cliente " . $socio->getNumero() . ": " . $socio->getNombre() . "<br>";
-            echo "<b>-Nombre de usuario: " . $socio->getUsuario() . "<br>";
-            echo "Alquileres actuales: " . $socio->getNumSoportesAlquilados() . "</li>";
+            echo "<li><b>Cliente </b>" . $socio->getNumero() . ": " . $socio->getNombre() . "<br>";
+            echo "<b>Nombre de usuario:</b> " . $socio->getUsuario() . "<br>";
+            echo "<b>Alquileres actuales: </b>" . $socio->getNumSoportesAlquilados() . "</li>";
         }
         echo "</ul>";
     }

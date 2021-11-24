@@ -63,8 +63,9 @@ abstract class Soporte implements Resumible {
     }
 
     public function mostrarResumen() : void {
-        $cadena = "<br><i>" . $this->titulo ."</i><br>" . 
-        $this->getPrecio() . "€ (IVA no incluido) <br>";
+        $cadena = "<b><br><i>" . $this->titulo ."</i></b><br>" . 
+        $this->getPrecio() . "€ (IVA no incluido) <br>" .
+        "Puntuación: " . $this->getPuntuacion() . "<br>";
         echo $cadena;
     }
 }
