@@ -62,23 +62,48 @@ abstract class Soporte implements Resumible {
         private float $precio,
         public bool $alquilado = false
     ){}
-
+    
+    /**
+     * getTitulo
+     *
+     * @return string
+     */
     public function getTitulo() : string {
         return $this->titulo;
     }
-
+    
+    /**
+     * getMetacritic
+     *
+     * @return string
+     */
     public function getMetacritic() : string {
         return $this->metacritic;
     }
-
+    
+    /**
+     * getNumero
+     *
+     * @return string
+     */
     public function getNumero(): string {
         return $this->numero;
     }
-
+    
+    /**
+     * getPrecio
+     *
+     * @return float
+     */
     public function getPrecio(): float {
         return $this->precio;
     }
-
+    
+    /**
+     * getPrecioConIva
+     *
+     * @return float
+     */
     public function getPrecioConIva(): float {
         return $this->precio * self::$IVA;
     }

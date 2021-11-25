@@ -34,7 +34,7 @@ class Dvd extends Soporte {
     /**
      * Función que extrae el valor numérico de la puntuación de juego de la web Metacritic (www.metacritic.com)
      *
-     * @return integer Puntuación numérica obtenida en Metacritic
+     * @return int Puntuación numérica obtenida en Metacritic
      */
     public function getPuntuacion(): int {
         $httpClient = new Client();

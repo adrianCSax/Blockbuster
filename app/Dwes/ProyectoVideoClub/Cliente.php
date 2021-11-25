@@ -13,16 +13,37 @@ use Monolog\Logger;
 use \Exception;
 use Monolog\Handler\RotatingFileHandler;
 
-class Cliente extends VideoClub
-
-{
+/**
+ * Clase que representa un Cliente.
+ * 
+ * Esta clase contiene un cliente de VideoClub el cual tiene un array de alquileres.
+ * 
+ * @package Dwes\ProyectoVideoClub
+ * @author Adrián Clement
+ * @author Pedro Guilló
+ * @author Damián Martín <dammardel@alu.edu.gva.es>
+ */
+class Cliente extends VideoClub {
 
     private array $soportesAlquilados;
     private int $numSoprtesAlquilados;
     private string $numero;
     private Logger $videoLogger;
 
-
+    
+    /**
+     * __construct
+     *
+     * Constuctor que inicializa el array de soportesAlquilados, el numSoportesAlquilados
+     * y el Logger. Así como el cliente.
+     * 
+     * @param string $nombre
+     * @param string $usuario
+     * @param string $password
+     * @param int $maxAlquilerConcurrente (default = 3)
+     * 
+     * @return void
+     */
     public function __construct(
         public string $nombre,
         private string $usuario,
@@ -36,12 +57,22 @@ class Cliente extends VideoClub
         $this->videoLogger->pushHandler(new RotatingFileHandler("logs/videoclub.log",0,Logger::DEBUG));
 
     }
-
+    
+    /**
+     * getSoportesAlquilados
+     *
+     * @return array
+     */
     public function getSoportesAlquilados(): array
     {
         return $this->soportesAlquilados;
     }
-
+    
+    /**
+     * getUsuario
+     *
+     * @return string
+     */
     public function getUsuario(): string
     {
         return $this->usuario;
@@ -51,51 +82,114 @@ class Cliente extends VideoClub
     {
         return $this->numero;
     }
-
+    
+    /**
+     * getNombre
+     *
+     * @return string
+     */
     public function getNombre(): string
     {
         return $this->nombre;
     }
-
+    
+    /**
+     * getPassword
+     *
+     * @return string
+     */
     public function getPassword(): string {
         return $this->password;
     }
-
+    
+    /**
+     * getNumSoportesAlquilados
+     *
+     * @return int
+     */
     public function getNumSoportesAlquilados(): int
     {
         return $this->numSoprtesAlquilados;
     }
-
+    
+    /**
+     * getAlquileres
+     *
+     * @return array
+     */
     public function getAlquileres() : array {
         return $this->soportesAlquilados;
     }
-
+    
+    /**
+     * setPassword
+     *
+     * @param  string $password
+     * @return Cliente
+     */
     public function setPassword(string $password) : Cliente {
         $this->password = $password;
         return $this;
     }
-
+    
+    /**
+     * setNombre
+     *
+     * @param  string $nombre
+     * @return Cliente
+     */
     public function setNombre(string $nombre) : Cliente {
         $this->nombre = $nombre;
         return $this;
     }
-    
+        
+    /**
+     * setUsuario
+     *
+     * @param  string $usuario
+     * @return Cliente
+     */
     public function setUsuario(string $usuario) : Cliente {
         $this->usuario = $usuario;
         return $this;
     }
-
+    
+    /**
+     * setNumero
+     *
+     * @param  string $numero
+     * @return Cliente
+     */
     public function setNumero(string $numero): Cliente
     {
         $this->numero = $numero;
         return $this;
     }
-
+    
+    /**
+     * tieneAlquilado
+     *
+     * Función que comprueba que un soporte no está alquilado por el cliente.
+     * 
+     * @param  Soporte $soporte
+     * @return bool
+     */
     public function tieneAlquilado(Soporte $soporte): bool
     {
         return (isset($this->soportesAlquilados[$soporte->getNumero()]));
     }
-
+    
+    /**
+     * alquilar
+     *
+     * Función que añade un Soporte al array de $soportesAlquilados.
+     * 
+     * @param  Soporte $soporte
+     * @return Cliente
+     * 
+     * @throws SoporteYaAlquiladoException
+     * @throws CupoSuperadoException
+     */
     public function alquilar(Soporte $soporte): Cliente
     {
         try {
@@ -127,7 +221,17 @@ class Cliente extends VideoClub
 
         return $this;
     }
-
+    
+    /**
+     * devolver
+     *
+     * Función que elimina un Soporte del array de soportesAlquilados. Eliminando un alquiler.
+     * 
+     * @param  int $numSoporte
+     * @return Cliente
+     * 
+     * @throws SoporteNoEncontradoException
+     */
     public function devolver(int $numSoporte): Cliente
     {
         try {
@@ -149,7 +253,14 @@ class Cliente extends VideoClub
     
         return $this;
     }
-
+    
+    /**
+     * listaAlquileres
+     *
+     * Función que hace un echo de todos los alquileres(soportesAlquilados) del cliente.
+     * 
+     * @return void
+     */
     public function listaAlquileres(): void
     {
         echo "<b>El cliente tiene " . $this->numSoprtesAlquilados . " soportes alquilados.</b><br>";

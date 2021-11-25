@@ -13,6 +13,17 @@ use Dwes\ProyectoVideoClub\Util\SoporteYaAlquiladoException;
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
 
+/**
+ * Clase que representa un VideoClub.
+ * 
+ * Videoclub es una clase utilizada para crear un videoclub. Guarda los Clientes y los Soportes.
+ * Además, relaciona las interacciones entre estos dos generando alquileres y devoluciones.
+ * 
+ * @package Dwes\ProyectoVideoClub
+ * @author Adrián Clement
+ * @author Pedro Guilló
+ * @author Damián Martín <dammardel@alu.edu.gva.es>
+ */
 class VideoClub
 {
     private string $nombre;
@@ -24,6 +35,17 @@ class VideoClub
     private int $numTotalAlquileres;
     private Logger $videoClubLogger;
 
+        
+    /**
+     * __construct
+     *
+     * Constructor al cual se le pasa por parámetro el nombre del videoclub. 
+     * Inicializa los array de socios y productos así como numuero de productos y socios. 
+     * Además de el logger.
+     * 
+     * @param string $nombre
+     * @return void
+     */
     public function __construct(string $nombre)
     {
         $this->nombre = $nombre;
@@ -34,37 +56,77 @@ class VideoClub
         $this->videoClubLogger = new Logger("VideoClubLogger-2");
         $this->videoClubLogger->pushHandler(new RotatingFileHandler("logs/videoclub.log", 0, Logger::DEBUG));
     }
-
+    
+    /**
+     * getNumProductosAlquilados
+     *
+     * @return int
+     */
     public function getNumProductosAlquilados(): int
     {
         return $this->numProductosAlquilado;
     }
-
+    
+    /**
+     * getNumTotalAlquileres
+     *
+     * @return int
+     */
     public function getNumTotalAlquileres(): int
     {
         return $this->numTotalAlquileres;
     }
-
+    
+    /**
+     * getNumSocios
+     *
+     * @return int
+     */
     public function getNumSocios(): int
     {
         return $this->numSocios;
     }
-
+    
+    /**
+     * getSocios
+     *
+     * @return array
+     */
     public function getSocios(): array
     {
         return $this->socios;
     }
-
+    
+    /**
+     * getProductos
+     *
+     * @return array
+     */
     public function getProductos(): array
     {
         return $this->productos;
     }
-
+    
+    /**
+     * setSocios
+     *
+     * @param  array $socios
+     * @return void
+     */
     public function setSocios(array $socios)
     {
         $this->socios = $socios;
     }
-
+    
+    /**
+     * incluirProducto
+     * 
+     * Función a la que se pasa un Soporte para que sea incluido en el 
+     * array $productos.
+     *
+     * @param Soporte $producto
+     * @return VideoClub
+     */
     public function incluirProducto(Soporte $producto): VideoClub
     {
         $this->productos[$producto->getNumero()] = $producto;
@@ -73,7 +135,18 @@ class VideoClub
         //echo "<br>Incluido soporte " . $producto->getNumero();
         return $this;
     }
-
+    
+    /**
+     * incluirCintaVideo
+     *
+     * Función qur genera un nuevo objeto CintaVideo y lo incluye en el array de $productos de la clase VideoClub.
+     * 
+     * @param  string $metacritic
+     * @param  string $titulo
+     * @param  float $precio
+     * @param  int $duracion
+     * @return VideoClub
+     */
     public function incluirCintaVideo(string $metacritic, string $titulo, float $precio, int $duracion): VideoClub
     {
         $video = new CintaVideo($titulo, strval($this->numProductos), $precio, $duracion);
@@ -83,6 +156,19 @@ class VideoClub
         return $this;
     }
 
+        
+    /**
+     * incluirDvd
+     *
+     * Función qur genera un nuevo objeto Dvd y lo incluye en el array de $productos de la clase VideoClub.
+     * 
+     * @param  string $metacritic
+     * @param  string $titulo
+     * @param  float $precio
+     * @param  string $idiomas
+     * @param  string $formatPantalla
+     * @return VideoClub
+     */
     public function incluirDvd(string $metacritic, string $titulo, float $precio, string $idiomas, string $formatPantalla): VideoClub
     {
         $dvd = new Dvd($titulo, strval($this->numProductos), $precio, $idiomas, $formatPantalla);
@@ -91,7 +177,20 @@ class VideoClub
         $this->numProductos++;
         return $this;
     }
-
+    
+    /**
+     * incluirJuego
+     *
+     * Función qur genera un nuevo objeto Juego y lo incluye en el array de $productos de la clase VideoClub.
+     * 
+     * @param  string $metacritic
+     * @param  string $titulo
+     * @param  float $precio
+     * @param  string $consola
+     * @param  int $minJ
+     * @param  int $maxJ
+     * @return VideoClub
+     */
     public function incluirJuego(string $metacritic, string $titulo, float $precio, string $consola, int $minJ, int $maxJ): VideoClub
     {
         $juego = new Juego($titulo, strval($this->numProductos), $precio, $consola, $minJ, $maxJ);
@@ -101,7 +200,18 @@ class VideoClub
         return $this;
     }
 
-    // Hacer asociativo
+        
+    /**
+     * incluirSocio
+     *
+     * Función que genera un nuevo Cliente y lo añade al array de $socios de la clase VideoClub.
+     * 
+     * @param  string $nombre
+     * @param  string $usuario
+     * @param  string $password
+     * @param  int $maxAlquilerConcurrente
+     * @return VideoClub
+     */
     public function incluirSocio(string $nombre, string $usuario, string $password, int $maxAlquilerConcurrente = 3): VideoClub
     {
         $socio = new Cliente($nombre, $usuario, $password, $maxAlquilerConcurrente);
@@ -113,7 +223,14 @@ class VideoClub
         $this->numSocios++;
         return $this;
     }
-
+    
+    /**
+     * listarProductos
+     *
+     * Función que lista el array $productos a través de echos.
+     * 
+     * @return void
+     */
     public function listarProductos()
     {
         foreach ($this->productos as $producto) { 
@@ -121,7 +238,14 @@ class VideoClub
             echo "<br>";
         }
     }
-
+    
+    /**
+     * listarSocios
+     *
+     * Función que lista el array $socios a través de echos.
+     * 
+     * @return void
+     */
     public function listarSocios()
     {
         echo "<p>Listado de " . count($this->socios) . " socios del videoclub";
@@ -133,7 +257,21 @@ class VideoClub
         }
         echo "</ul>";
     }
-
+    
+    /**
+     * alquilaSocioProducto
+     *
+     * Función que a través del $numeroCliente y $numeroSoporte establece una relación de alquiler entre ambos.
+     * 
+     * @param  string $numeroCliente
+     * @param  string $numeroSoporte
+     * 
+     * @return VideoClub
+     * 
+     * @throws ClienteNoEncontradoException
+     * @throws SoporteNoEncontradoException
+     * @throws SoporteYaAlquiladoException
+     */
     public function alquilaSocioProducto(string $numeroCliente, string $numeroSoporte): VideoClub
     {
 
@@ -165,7 +303,18 @@ class VideoClub
 
         return $this;
     }
-
+    
+    /**
+     * alquilarSocioProductos
+     *
+     * Función que establece una relación entre un cliente y vaios productos. 
+     * 
+     * @param  string $numeroCliente
+     * @param  array $productosParaAlquilar
+     * @return void
+     * 
+     * @throws SoporteYaAlquiladoException
+     */
     public function alquilarSocioProductos(string $numeroCliente, array $productosParaAlquilar)
     {
         $arrayLog = [$this->socios[$numeroCliente], $productosParaAlquilar];
@@ -191,7 +340,18 @@ class VideoClub
 
         return $this;
     }
-
+    
+    /**
+     * devolverSocioProducto
+     *
+     * Función que elimina la relación de un cliente con un producto.
+     * 
+     * @param  string $numeroCliente
+     * @param  string $numeroSoporte
+     * @return void
+     * 
+     * @throws ClienteNoEncontradoException
+     */
     public function devolverSocioProducto(string $numeroCliente, int $numeroSoporte)
     {
 
@@ -209,7 +369,19 @@ class VideoClub
 
         return $this;
     }
-
+    
+    /**
+     * devolverSocioProductos
+     *
+     * Función que elimina una relación entre un cliente y vaios productos. 
+     *  
+     * @param  string $numeroCliente
+     * @param  array $productosParaDevolver
+     * @return void
+     * 
+     * @throws ClienteNoEncontradoException
+     * @throws SoporteNoEncontradoException
+     */
     public function devolverSocioProductos(string $numeroCliente, array $productosParaDevolver)
     {
         $arrayLog = [$numeroCliente, $productosParaDevolver];
