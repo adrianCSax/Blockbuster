@@ -113,7 +113,8 @@
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Dwes.html">Dwes</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Dwes-ProyectoVideoClub.html">ProyectoVideoClub</a></li>
                             </ul>
         </div>
     
@@ -123,17 +124,49 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/CintaVideo.php"><a href="files/app-dwes-proyectovideoclub-cintavideo.html"><abbr title="app/Dwes/ProyectoVideoClub/CintaVideo.php">CintaVideo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Clase que representa un Soporte del VideoClub.</p>
+            <p class="phpdocumentor-summary">clase CintaVideo extends Soporte</p>
 
-    <section class="phpdocumentor-description"><p>Soporte es una clase abstracta que tiene los atributos comunes de todos los soportes que
-heredan de dicha clase. Como el título, el número o el precio.</p>
+    <section class="phpdocumentor-description"><p>Esta clase genera una cinta de video con las propiedades de soporte más la duración.</p>
 </section>
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Adrián Clement</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Pedro Guilló</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Damián Martín <a href="mailto:dammardel@alu.edu.gva.es">dammardel@alu.edu.gva.es</a></p>
+</section>
+
+                                    </dd>
+                        </dl>
 
 
 
@@ -200,56 +233,57 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Constructor de la clase Soporte</dd>
+<dd>__construct</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_getMetacritic">getMetacritic()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>getMetacritic</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_getNumero">getNumero()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>getNumero</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_getPrecio">getPrecio()</a>
     <span>
                                 &nbsp;: float    </span>
 </dt>
-<dd></dd>
+<dd>getPrecio</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_getPrecioConIva">getPrecioConIva()</a>
     <span>
                                 &nbsp;: float    </span>
 </dt>
-<dd></dd>
+<dd>getPrecioConIva</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-CintaVideo.html#method_getPuntuacion">getPuntuacion()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Función abstracta que devuelve la puntuación de la página web del producto en metacritic</dd>
+<dd>Función que extrae el valor numérico de la puntuación de juego de la web Metacritic (www.metacritic.com)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_getTitulo">getTitulo()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>getTitulo</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-CintaVideo.html#method_mostrarResumen">mostrarResumen()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Muestra el resumen del soporte, con su título, precio sin iva y puntuación en metacritic.</dd>
+<dd>Muestra el resumen del Juego. LLama a la misma función de Soporte para mostrar los datos generales
+y añade información sobre la consola y el número de jugadores posible.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Dwes-ProyectoVideoClub-Soporte.html#method_setMetacritic">setMetacritic()</a>
@@ -388,7 +422,7 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/CintaVideo.php"><a href="files/app-dwes-proyectovideoclub-cintavideo.html"><abbr title="app/Dwes/ProyectoVideoClub/CintaVideo.php">CintaVideo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -527,17 +561,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/CintaVideo.php"><a href="files/app-dwes-proyectovideoclub-cintavideo.html"><abbr title="app/Dwes/ProyectoVideoClub/CintaVideo.php">CintaVideo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Constructor de la clase Soporte</p>
+        <p class="phpdocumentor-summary">__construct</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$titulo</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numero</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$precio</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$duracion</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>Al generar un soporte la variable alquilado se establece como false.</p>
+        <section class="phpdocumentor-description"><p>Constructor de la clase CintaVideo</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -568,8 +602,7 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
@@ -594,17 +627,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">80</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">getMetacritic</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getMetacritic</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -627,17 +660,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">getNumero</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getNumero</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -660,17 +693,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">getPrecio</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getPrecio</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -693,17 +726,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">getPrecioConIva</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getPrecioConIva</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -726,11 +759,11 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/CintaVideo.php"><a href="files/app-dwes-proyectovideoclub-cintavideo.html"><abbr title="app/Dwes/ProyectoVideoClub/CintaVideo.php">CintaVideo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Función abstracta que devuelve la puntuación de la página web del producto en metacritic</p>
+        <p class="phpdocumentor-summary">Función que extrae el valor numérico de la puntuación de juego de la web Metacritic (www.metacritic.com)</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -743,7 +776,7 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Puntuación de metacritic</p>
+            <section class="phpdocumentor-description"><p>Puntuación numérica obtenida en Metacritic</p>
 </section>
 
     
@@ -761,17 +794,17 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">getTitulo</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getTitulo</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -794,11 +827,12 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/CintaVideo.php"><a href="files/app-dwes-proyectovideoclub-cintavideo.html"><abbr title="app/Dwes/ProyectoVideoClub/CintaVideo.php">CintaVideo.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Muestra el resumen del soporte, con su título, precio sin iva y puntuación en metacritic.</p>
+        <p class="phpdocumentor-summary">Muestra el resumen del Juego. LLama a la misma función de Soporte para mostrar los datos generales
+y añade información sobre la consola y el número de jugadores posible.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -811,7 +845,7 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>La función escribe por pantalla el resumen del soporte</p>
+            <section class="phpdocumentor-description"><p>Muestra el resumen por pantalla</p>
 </section>
 
     
@@ -829,7 +863,7 @@ heredan de dicha clase. Como el título, el número o el precio.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Dwes/ProyectoVideoClub/Soporte.php"><a href="files/app-dwes-proyectovideoclub-soporte.html"><abbr title="app/Dwes/ProyectoVideoClub/Soporte.php">Soporte.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">118</span>
 
     </aside>
 
